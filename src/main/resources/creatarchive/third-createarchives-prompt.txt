@@ -1,0 +1,30 @@
+{
+  "patientCode": "体检编号",
+  "patientId": "病人 ID",
+  "name": "姓名",
+  "sex": "性别",
+  "age": "年龄",
+  "birthDate": "出生日期",
+  "cardType": "证件类型",
+  "cardId": "证件编号",
+  "address": "家庭地址",
+  "phone": "联系电话",
+  "marital": "婚姻状况",
+  "nation": "民族",
+  "country": "国籍",
+  "education": "学历",
+  "contactName": "联系人",
+  "contactPhone": "联系人电话",
+  "contactAddress": "联系人地址",
+  "orgId": "合约单位 ID",
+  "orgName": "合约单位名称"
+}
+
+{
+  "returnCode": "1",
+  "errorMessage": "成功",
+  "data": {
+    "patientId": "病人 ID",
+    "clinicId": "门诊号"
+  }
+}

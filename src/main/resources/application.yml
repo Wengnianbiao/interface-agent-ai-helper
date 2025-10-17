@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: agent-ai-helper
+server:
+  port: 8081
+
+langchain4j:
+  community:
+    dashscope:
+      chat-model:
+        model-name: qwen-max
+        api-key: sk-c2552553eba849e8aef5607fb5115bc7

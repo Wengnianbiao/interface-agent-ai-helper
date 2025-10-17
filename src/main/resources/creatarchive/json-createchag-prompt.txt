@@ -1,0 +1,635 @@
+以下是一个账单接口的调用链路
+首先是上游的账单创建入参，称作jarvis_request，它是基于json的数据格式
+{
+    "chargeMode": "cash",
+    "doctorInfo": {
+        "idUser": 22,
+        "userName": "信息科(勿删)",
+        "number": "xxk",
+        "departList": [
+            {
+                "departName": "一般检查",
+                "departType": "OTHER"
+            },
+            {
+                "departName": "内科",
+                "departType": "OTHER"
+            },
+            {
+                "departName": "外科",
+                "departType": "OTHER"
+            },
+            {
+                "departName": "耳鼻喉科  ",
+                "departType": "OTHER"
+            },
+            {
+                "departName": "眼科",
+                "departType": "OTHER"
+            },
+            {
+                "departName": "口腔科",
+                "departType": "OTHER"
+            },
+            {
+                "departName": "妇科",
+                "departType": "OTHER"
+            },
+            {
+                "departName": "心电图",
+                "departType": "PACS",
+                "departCode": "124"
+            },
+            {
+                "departName": "检验科",
+                "departType": "LIS"
+            },
+            {
+                "departName": "彩超",
+                "departType": "PACS",
+                "departCode": "5"
+            },
+            {
+                "departName": "DR",
+                "departType": "PACS",
+                "departCode": "137"
+            },
+            {
+                "departName": "CT",
+                "departType": "PACS",
+                "departCode": "137"
+            },
+            {
+                "departName": "MRI",
+                "departType": "PACS",
+                "departCode": "137"
+            },
+            {
+                "departName": "乳腺钼靶",
+                "departType": "PACS",
+                "departCode": "137"
+            },
+            {
+                "departName": "内镜室",
+                "departType": "PACS",
+                "departCode": "275"
+            }
+        ]
+    },
+    "patientInfo": {
+        "sex": "1",
+        "age": 35,
+        "marriage": "3",
+        "identitycard": "110107199001018138",
+        "cardType": "1",
+        "patientLevelName": "普通体检人",
+        "phone": "17826809454",
+        "birthday": "1990-01-01",
+        "patientName": "测试账号",
+        "patientCode": "102509080001",
+        "hisPatientId": "030001375",
+        "visitNo": "20250908000204",
+        "userType": 0,
+        "orgName": "",
+        "registertime": "2025-09-08 10:17:52",
+        "physicalTypes": "physical:types:A",
+        "physicalTypeName": "健康体检"
+    },
+    "chagPatientSheet": {
+        "idPatientSheet": 2484,
+        "settlementOrderNo": "2484",
+        "sumAmount": 17000,
+        "sumAmountYuan": 170
+    },
+    "chagPatientSheetDetail": [
+        {
+            "idPatientFeeItem": 45857,
+            "price": 8000,
+            "factPrice": 8000,
+            "discount": "1",
+            "factPriceYuan": 80,
+            "dfiInterfaceCodeName1": "收费编码",
+            "dfiInterfaceCodeName2": "医技对照编码",
+            "dfiInterfaceCodeName6": "条码数量",
+            "feeItemName": "B超(肾输尿管膀胱)",
+            "idPatientSheetDetail": 51364,
+            "idPatientSheet": 2484,
+            "departName": "彩超",
+            "ddInterfaceCodeName1": "科室外部编码",
+            "departCode": "5",
+            "departType": "PACS",
+            "idFeeItem": 8353,
+            "settlementOrderNo": "2484",
+            "resent": 0,
+            "realRefund": 0,
+            "consumeList": [
+                {
+                    "dciName": "B超(肾输尿管膀胱)",
+                    "idConsumeItem": 510098,
+                    "factPrice": "8000.00",
+                    "price": "8000.00",
+                    "priceYuan": 80,
+                    "idPatientFeeItem": "45857",
+                    "quantity": 1,
+                    "factPriceYuan": 80
+                }
+            ]
+        },
+        {
+            "idPatientFeeItem": 45856,
+            "price": 9000,
+            "factPrice": 9000,
+            "discount": "1",
+            "factPriceYuan": 90,
+            "dfiInterfaceCodeName1": "收费编码",
+            "dfiInterfaceCodeName2": "医技对照编码",
+            "dfiInterfaceCodeName6": "条码数量",
+            "feeItemName": "颈椎正侧位片(DR)",
+            "idPatientSheetDetail": 51363,
+            "idPatientSheet": 2484,
+            "departName": "DR",
+            "ddInterfaceCodeName1": "科室外部编码",
+            "departCode": "137",
+            "departType": "PACS",
+            "idFeeItem": 8334,
+            "settlementOrderNo": "2484",
+            "resent": 0,
+            "realRefund": 0,
+            "consumeList": [
+                {
+                    "dciName": "颈椎正侧位片(DR)",
+                    "idConsumeItem": 510079,
+                    "factPrice": "9000.00",
+                    "price": "9000.00",
+                    "priceYuan": 90,
+                    "idPatientFeeItem": "45856",
+                    "quantity": 1,
+                    "factPriceYuan": 90
+                }
+            ]
+        }
+    ]
+}
+
+然后这是上游账单创建接口要求的响应出参，称作jarvis_response
+{
+        "code": "200",
+        "message": "成功",
+        "rsp": {
+                "presId": "存放在cps表presId。 His不支持则返回Null（或将idPatientSheet返回）",
+                 "hisItems":[{"idPatientFeeItem":"xx","hisDetailId":"明细id",
+                  "extend1":"扩展字段1", "extend2":"扩展字段2","extend3":"扩展字段3"
+                }],
+          }
+}
+
+接着是三方建档接口的入参，称作third_request,
+{
+   "patientCode": "体检编号",
+   "patientId": "病人 ID",
+   "name": "姓名",
+   "sex": "性别",
+   "age": "年龄",
+   "birthDate": "出生日期",
+   "cardType": "证件类型",
+   "cardId": "证件编号",
+   "address": "家庭地址",
+   "phone": "联系电话",
+   "marital": "婚姻状况",
+   "nation": "民族",
+   "country": "国籍",
+   "education": "学历",
+   "contactName": "联系人",
+   "contactPhone": "联系人电话",
+   "contactAddress": "联系人地址",
+   "orgId": "合约单位 ID",
+   "orgName": "合约单位名称"
+}
+
+以及三方接口的响应，称作third_response
+{
+  "returnCode": "1",
+  "errorMessage": "成功",
+  "data": {
+    "patientId": "病人 ID",
+    "clinicId": "门诊号"
+  }
+}
+
+现在有个agent平台，作用将上游的入参jarvis_request转化成三方接口需要的入参third_request
+并把三方接口的响应third_response转化成上游的jarvis_response响应
+agent平台通过.json的配置文件完成整个链路的映射，下面的json就是上述的配置文件信息
+{
+  "nodeInfo": {
+    "nodeName": "创建档案",
+    "nodeType": "HTTP"
+  },
+  "paramsConfig": [
+    {
+      "processType": "PRE_PROCESS",
+      "sourceParamKey": "patientCode",
+      "sourceParamType": "STRING",
+      "paramDesc": "体检编号",
+      "targetParamKey": "patientCode",
+      "targetParamType": "STRING",
+      "sort": 1,
+      "mappingType": "NAME",
+      "mappingSource": "RESPONSE",
+      "mappingRule": null,
+      "childParam": null
+    },
+    {
+      "processType": "PRE_PROCESS",
+      "sourceParamKey": "hisPatientId",
+      "sourceParamType": "STRING",
+      "paramDesc": "病人 ID",
+      "targetParamKey": "patientId",
+      "targetParamType": "STRING",
+      "sort": 1,
+      "mappingType": "NAME",
+      "mappingSource": "RESPONSE",
+      "mappingRule": null,
+      "childParam": null
+    },
+    {
+      "processType": "PRE_PROCESS",
+      "sourceParamKey": "patientName",
+      "sourceParamType": "STRING",
+      "paramDesc": "姓名",
+      "targetParamKey": "name",
+      "targetParamType": "STRING",
+      "sort": 1,
+      "mappingType": "NAME",
+      "mappingSource": "RESPONSE",
+      "mappingRule": null,
+      "childParam": null
+    },
+    {
+      "processType": "PRE_PROCESS",
+      "sourceParamKey": "age",
+      "sourceParamType": "INTEGER",
+      "paramDesc": "年龄",
+      "targetParamKey": "age",
+      "targetParamType": "INTEGER",
+      "sort": 1,
+      "mappingType": "NAME",
+      "mappingSource": "RESPONSE",
+      "mappingRule": null,
+      "childParam": null
+    },
+    {
+      "processType": "PRE_PROCESS",
+      "sourceParamKey": "birthday",
+      "sourceParamType": "STRING",
+      "paramDesc": "出生日期",
+      "targetParamKey": "birthDate",
+      "targetParamType": "STRING",
+      "sort": 1,
+      "mappingType": "NAME",
+      "mappingSource": "RESPONSE",
+      "mappingRule": null,
+      "childParam": null
+    },
+    {
+      "processType": "PRE_PROCESS",
+      "sourceParamKey": "cardType",
+      "sourceParamType": "STRING",
+      "paramDesc": "证件类型",
+      "targetParamKey": "cardType",
+      "targetParamType": "STRING",
+      "sort": 1,
+      "mappingType": "NAME",
+      "mappingSource": "RESPONSE",
+      "mappingRule": null,
+      "childParam": null
+    },
+    {
+      "processType": "PRE_PROCESS",
+      "sourceParamKey": "identitycard",
+      "sourceParamType": "STRING",
+      "paramDesc": "证件编号",
+      "targetParamKey": "cardId",
+      "targetParamType": "STRING",
+      "sort": 1,
+      "mappingType": "NAME",
+      "mappingSource": "RESPONSE",
+      "mappingRule": null,
+      "childParam": null
+    },
+    {
+      "processType": "PRE_PROCESS",
+      "sourceParamKey": "address",
+      "sourceParamType": "STRING",
+      "paramDesc": "家庭地址",
+      "targetParamKey": "address",
+      "targetParamType": "STRING",
+      "sort": 1,
+      "mappingType": "NAME",
+      "mappingSource": "RESPONSE",
+      "mappingRule": null,
+      "childParam": null
+    },
+    {
+      "processType": "PRE_PROCESS",
+      "sourceParamKey": "phone",
+      "sourceParamType": "STRING",
+      "paramDesc": "联系电话",
+      "targetParamKey": "phone",
+      "targetParamType": "STRING",
+      "sort": 1,
+      "mappingType": "NAME",
+      "mappingSource": "RESPONSE",
+      "mappingRule": null,
+      "childParam": null
+    },
+    {
+      "processType": "PRE_PROCESS",
+      "sourceParamKey": "marriage",
+      "sourceParamType": "STRING",
+      "paramDesc": "婚姻状况",
+      "targetParamKey": "marital",
+      "targetParamType": "STRING",
+      "sort": 1,
+      "mappingType": "EXPRESSION",
+      "mappingSource": "RESPONSE",
+      "mappingRule": "#data['marriage'] == null || #data['marriage'] == '' ) ? '未知' : (#data['marriage'] == '1' ? '未婚' : (#data['marriage'] == '2' ? '已婚' : '未知')",
+      "childParam": null
+    },
+    {
+      "processType": "PRE_PROCESS",
+      "sourceParamKey": "nationName",
+      "sourceParamType": "STRING",
+      "paramDesc": "民族",
+      "targetParamKey": "nation",
+      "targetParamType": "STRING",
+      "sort": 1,
+      "mappingType": "NAME",
+      "mappingSource": "RESPONSE",
+      "mappingRule": null,
+      "childParam": null
+    },
+    {
+      "processType": "PRE_PROCESS",
+      "sourceParamKey": "country",
+      "sourceParamType": "STRING",
+      "paramDesc": "国籍",
+      "targetParamKey": "country",
+      "targetParamType": "STRING",
+      "sort": 1,
+      "mappingType": "NAME",
+      "mappingSource": "RESPONSE",
+      "mappingRule": null,
+      "childParam": null
+    },
+    {
+      "processType": "PRE_PROCESS",
+      "sourceParamKey": "education",
+      "sourceParamType": "STRING",
+      "paramDesc": "学历",
+      "targetParamKey": "education",
+      "targetParamType": "STRING",
+      "sort": 1,
+      "mappingType": "NAME",
+      "mappingSource": "RESPONSE",
+      "mappingRule": null,
+      "childParam": null
+    },
+    {
+      "processType": "PRE_PROCESS",
+      "sourceParamKey": "contactName",
+      "sourceParamType": "STRING",
+      "paramDesc": "联系人",
+      "targetParamKey": "contactName",
+      "targetParamType": "STRING",
+      "sort": 1,
+      "mappingType": "NAME",
+      "mappingSource": "RESPONSE",
+      "mappingRule": null,
+      "childParam": null
+    },
+    {
+      "processType": "PRE_PROCESS",
+      "sourceParamKey": "contactPhone",
+      "sourceParamType": "STRING",
+      "paramDesc": "联系人电话",
+      "targetParamKey": "contactPhone",
+      "targetParamType": "STRING",
+      "sort": 1,
+      "mappingType": "NAME",
+      "mappingSource": "RESPONSE",
+      "mappingRule": null,
+      "childParam": null
+    },
+    {
+      "processType": "PRE_PROCESS",
+      "sourceParamKey": "contactAddress",
+      "sourceParamType": "STRING",
+      "paramDesc": "联系人地址",
+      "targetParamKey": "contactAddress",
+      "targetParamType": "STRING",
+      "sort": 1,
+      "mappingType": "NAME",
+      "mappingSource": "RESPONSE",
+      "mappingRule": null,
+      "childParam": null
+    },
+    {
+      "processType": "PRE_PROCESS",
+      "sourceParamKey": "hisOrgId",
+      "sourceParamType": "STRING",
+      "paramDesc": "合约单位 ID",
+      "targetParamKey": "orgId",
+      "targetParamType": "STRING",
+      "sort": 1,
+      "mappingType": "NAME",
+      "mappingSource": "RESPONSE",
+      "mappingRule": null,
+      "childParam": null
+    },
+    {
+      "processType": "PRE_PROCESS",
+      "sourceParamKey": "orgName",
+      "sourceParamType": "STRING",
+      "paramDesc": "合约单位名称",
+      "targetParamKey": "orgName",
+      "targetParamType": "STRING",
+      "sort": 1,
+      "mappingType": "NAME",
+      "mappingSource": "RESPONSE",
+      "mappingRule": null,
+      "childParam": null
+    },
+    {
+      "processType": "PRE_PROCESS",
+      "sourceParamKey": "sex",
+      "sourceParamType": "STRING",
+      "paramDesc": "性别（0/null/3→未知，1→男，2→女）",
+      "targetParamKey": "sex",
+      "targetParamType": "STRING",
+      "sort": 1,
+      "mappingType": "EXPRESSION",
+      "mappingSource": "RESPONSE",
+      "mappingRule": "#data['sex'] == null || #data['sex'] == '' ) ? '未知' : (#data['sex'] == '1' ? '未婚' : (#data['sex'] == '2' ? '已婚' : '未知')",
+      "childParam": null
+    },
+    {
+      "processType": "POST_PROCESS",
+      "sourceParamKey": "returnCode",
+      "sourceParamType": "STRING",
+      "paramDesc": "响应状态码转换：1->200，其他->-1",
+      "targetParamKey": "code",
+      "targetParamType": "STRING",
+      "sort": 1,
+      "mappingType": "EXPRESSION",
+      "mappingSource": "RESPONSE",
+      "mappingRule": "#data == \"1\" ? \"200\" : \"-1\"",
+      "childParam": null
+    },
+    {
+      "processType": "POST_PROCESS",
+      "sourceParamKey": "data",
+      "sourceParamType": "OBJECT",
+      "paramDesc": null,
+      "targetParamKey": "rsp",
+      "targetParamType": "OBJECT",
+      "sort": 1,
+      "mappingType": "NAME",
+      "mappingSource": "RESPONSE",
+      "mappingRule": null,
+      "childParam": [
+        {
+          "processType": "POST_PROCESS",
+          "sourceParamKey": "patientId",
+          "sourceParamType": "STRING",
+          "paramDesc": null,
+          "targetParamKey": "outPatientCode",
+          "targetParamType": "STRING",
+          "sort": 1,
+          "mappingType": "NAME",
+          "mappingSource": "RESPONSE",
+          "mappingRule": null,
+          "childParam": null
+        },
+        {
+          "processType": "POST_PROCESS",
+          "sourceParamKey": "clinicId",
+          "sourceParamType": "STRING",
+          "paramDesc": null,
+          "targetParamKey": "visitNo",
+          "targetParamType": "STRING",
+          "sort": 1,
+          "mappingType": "NAME",
+          "mappingSource": "RESPONSE",
+          "mappingRule": null,
+          "childParam": null
+        }
+      ]
+    },
+    {
+      "processType": "POST_PROCESS",
+      "sourceParamKey": "errorMessage",
+      "sourceParamType": "STRING",
+      "paramDesc": null,
+      "targetParamKey": "message",
+      "targetParamType": "STRING",
+      "sort": 1,
+      "mappingType": "NAME",
+      "mappingSource": "RESPONSE",
+      "mappingRule": null,
+      "childParam": null
+    }
+  ]
+}
+其中nodeInfo表示接口描述信息
+paramsConfig是一个根据三方接口的入参出参构建的树状节点列表
+节点中的processType表示处理类型，PRE_PROCESS是前置处理也就是按照third_request的入参
+用jarvis_request中的字段转化而来
+sourceParamKey表示jarvis_request中的字段名称
+targetParamKey则是third_request要求的字段名称
+paramDesc是字段的描述信息
+sort默认值写0就行
+mappingType是映射类型，枚举值如下
+public enum MappingType {
+
+    /**
+     * 固定值
+     */
+    CONSTANT,
+
+    /**
+     * 名称映射
+     */
+    NAME,
+
+    /**
+     * 表达式:通常为SpEL
+     */
+    EXPRESSION,
+
+    /**
+     * Bean表达式映射:主要场景还是查体软表完成字段映射
+     */
+    BEAN_EXPRESSION,
+
+    /**
+     * 直接映射,兼容数组的情况
+     */
+    DIRECT
+}
+sourceParamType和targetParamType的枚举如下
+{
+
+    /**
+     * 字符串
+     */
+    STRING,
+
+    /**
+     * 数字INT
+     */
+    INTEGER,
+
+    /**
+     * 数字LONG
+     */
+    LONG,
+
+    /**
+     * 布尔
+     */
+    BOOLEAN,
+
+    /**
+     * 对象
+     */
+    OBJECT,
+
+    /**
+     * 数组
+     */
+    ARRAY,
+
+    /**
+     * 接口入参就是数组
+     */
+    PURE_ARRAY,
+
+    /**
+     * 无
+     */
+    NONE;
+}
+childParam表示这个节点有没有子节点，通常targetParamType为对象或数组时需要配置子节点
+targetParamType是数组的情况下的构建规则为
+1、如果sourceParamType为OBJECT就只能转化成一维数组，递归配置对应的子节点就好
+2、sourceParamType如果为ARRAY或PURE_ARRAY支持一维和多维，递归配置对应的子节点就好
+无论原参数是数组还是对象只要是构建数组都需要创建一个虚拟节点作为数组元素的父节点，
+这个是虚拟节点没有sourceParamKey和sourceParamType的，虚拟节点的父节点就是targetParamKey对应的节点
+paramsConfig中PRE_PROCESS节点的数量是需要以third_request为准
+由jarvis_request转化而来
+paramsConfig中POST_PROCESS节点的数量是需要以jarvis_response为准
+由third_response转化而来
+
+现在我会给你一个新厂商的建档接口的入参和响应，jarvis_request和jarvis_response是不变的
+需要根据新厂商的建档入参和响应给我生成针对新厂商的接口映射配置必须是json格式的
+直接给我最终的json文件输出就可以
