@@ -1,186 +1,69 @@
-以下是一个账单接口的调用链路
-首先是上游的账单创建入参，称作jarvis_request，它是基于json的数据格式
+以下是一个建档接口的调用链路
+首先是上游的建档入参，称作jarvis_request，它是基于json的数据格式
 {
-    "chargeMode": "cash",
-    "doctorInfo": {
-        "idUser": 22,
-        "userName": "信息科(勿删)",
-        "number": "xxk",
-        "departList": [
-            {
-                "departName": "一般检查",
-                "departType": "OTHER"
-            },
-            {
-                "departName": "内科",
-                "departType": "OTHER"
-            },
-            {
-                "departName": "外科",
-                "departType": "OTHER"
-            },
-            {
-                "departName": "耳鼻喉科  ",
-                "departType": "OTHER"
-            },
-            {
-                "departName": "眼科",
-                "departType": "OTHER"
-            },
-            {
-                "departName": "口腔科",
-                "departType": "OTHER"
-            },
-            {
-                "departName": "妇科",
-                "departType": "OTHER"
-            },
-            {
-                "departName": "心电图",
-                "departType": "PACS",
-                "departCode": "124"
-            },
-            {
-                "departName": "检验科",
-                "departType": "LIS"
-            },
-            {
-                "departName": "彩超",
-                "departType": "PACS",
-                "departCode": "5"
-            },
-            {
-                "departName": "DR",
-                "departType": "PACS",
-                "departCode": "137"
-            },
-            {
-                "departName": "CT",
-                "departType": "PACS",
-                "departCode": "137"
-            },
-            {
-                "departName": "MRI",
-                "departType": "PACS",
-                "departCode": "137"
-            },
-            {
-                "departName": "乳腺钼靶",
-                "departType": "PACS",
-                "departCode": "137"
-            },
-            {
-                "departName": "内镜室",
-                "departType": "PACS",
-                "departCode": "275"
-            }
-        ]
+    "sex" : "2",
+    "age" : 53,
+    "marriage" : "2",
+    "identitycard" : "330511197202254629",
+    "cardType" : "1",
+    "phone" : "13059970500",
+    "birthday" : "1972-02-25",
+    "address" : "湖州",
+    "patientName" : "测试账号",
+    "patientCode" : "2509050001",
+    "nation" : "01",
+    "nationName" : "汉族",
+    "hisPatientId" : null,
+    "visitNo" : null,
+    "archivesCode" : "10011081",
+    "archivalNo" : "10011081",
+    "userType" : 1,
+    "orgName" : "测试单位",
+    "registrationExtend1" : null,
+    "registrationExtend2" : null,
+    "registrationExtend3" : null,
+    "patientInfo" : {
+      "sex" : "2",
+      "vpInvoiceTitle" : null,
+      "vpSocialCode" : null,
+      "age" : 53,
+      "marriage" : "2",
+      "identitycard" : "330511197202254629",
+      "cardType" : "1",
+      "patientLevelName" : "普通体检人",
+      "phone" : "13059970500",
+      "birthday" : "1972-02-25",
+      "hisOrgId" : "85330",
+      "address" : "湖州",
+      "patientName" : "莫伟文",
+      "patientCode" : "2508190082",
+      "hisPatientId" : null,
+      "visitNo" : null,
+      "userType" : 1,
+      "orgName" : "湖州市机关单位",
+      "registrationExtend1" : null,
+      "registrationExtend2" : null,
+      "registrationExtend3" : null,
+      "registertime" : "2025-08-19 08:28:01",
+      "physicalTypes" : "physical:types:A",
+      "physicalTypeName" : "健康体检"
     },
-    "patientInfo": {
-        "sex": "1",
-        "age": 35,
-        "marriage": "3",
-        "identitycard": "110107199001018138",
-        "cardType": "1",
-        "patientLevelName": "普通体检人",
-        "phone": "17826809454",
-        "birthday": "1990-01-01",
-        "patientName": "测试账号",
-        "patientCode": "102509080001",
-        "hisPatientId": "030001375",
-        "visitNo": "20250908000204",
-        "userType": 0,
-        "orgName": "",
-        "registertime": "2025-09-08 10:17:52",
-        "physicalTypes": "physical:types:A",
-        "physicalTypeName": "健康体检"
-    },
-    "chagPatientSheet": {
-        "idPatientSheet": 2484,
-        "settlementOrderNo": "2484",
-        "sumAmount": 17000,
-        "sumAmountYuan": 170
-    },
-    "chagPatientSheetDetail": [
-        {
-            "idPatientFeeItem": 45857,
-            "price": 8000,
-            "factPrice": 8000,
-            "discount": "1",
-            "factPriceYuan": 80,
-            "dfiInterfaceCodeName1": "收费编码",
-            "dfiInterfaceCodeName2": "医技对照编码",
-            "dfiInterfaceCodeName6": "条码数量",
-            "feeItemName": "B超(肾输尿管膀胱)",
-            "idPatientSheetDetail": 51364,
-            "idPatientSheet": 2484,
-            "departName": "彩超",
-            "ddInterfaceCodeName1": "科室外部编码",
-            "departCode": "5",
-            "departType": "PACS",
-            "idFeeItem": 8353,
-            "settlementOrderNo": "2484",
-            "resent": 0,
-            "realRefund": 0,
-            "consumeList": [
-                {
-                    "dciName": "B超(肾输尿管膀胱)",
-                    "idConsumeItem": 510098,
-                    "factPrice": "8000.00",
-                    "price": "8000.00",
-                    "priceYuan": 80,
-                    "idPatientFeeItem": "45857",
-                    "quantity": 1,
-                    "factPriceYuan": 80
-                }
-            ]
-        },
-        {
-            "idPatientFeeItem": 45856,
-            "price": 9000,
-            "factPrice": 9000,
-            "discount": "1",
-            "factPriceYuan": 90,
-            "dfiInterfaceCodeName1": "收费编码",
-            "dfiInterfaceCodeName2": "医技对照编码",
-            "dfiInterfaceCodeName6": "条码数量",
-            "feeItemName": "颈椎正侧位片(DR)",
-            "idPatientSheetDetail": 51363,
-            "idPatientSheet": 2484,
-            "departName": "DR",
-            "ddInterfaceCodeName1": "科室外部编码",
-            "departCode": "137",
-            "departType": "PACS",
-            "idFeeItem": 8334,
-            "settlementOrderNo": "2484",
-            "resent": 0,
-            "realRefund": 0,
-            "consumeList": [
-                {
-                    "dciName": "颈椎正侧位片(DR)",
-                    "idConsumeItem": 510079,
-                    "factPrice": "9000.00",
-                    "price": "9000.00",
-                    "priceYuan": 90,
-                    "idPatientFeeItem": "45856",
-                    "quantity": 1,
-                    "factPriceYuan": 90
-                }
-            ]
-        }
-    ]
+    "doctorInfo" : {
+      "idUser" : 705,
+      "userName" : "陈元梅",
+      "number" : "cym0555",
+      "loginName" : null,
+    }
 }
 
-然后这是上游账单创建接口要求的响应出参，称作jarvis_response
+然后这是上游建档接口要求的响应出参，称作jarvis_response
 {
-        "code": "200",
-        "message": "成功",
-        "rsp": {
-                "presId": "存放在cps表presId。 His不支持则返回Null（或将idPatientSheet返回）",
-                 "hisItems":[{"idPatientFeeItem":"xx","hisDetailId":"明细id",
-                  "extend1":"扩展字段1", "extend2":"扩展字段2","extend3":"扩展字段3"
-                }],
-          }
+  "code": "200",
+  "message": "成功",
+  "rsp": {
+    "outPatientCode":"编号 存放VocaPaitentTrans的PATIENT_ID",
+    "visitNo":"就诊卡号 VISIT_NO",
+  }
 }
 
 接着是三方建档接口的入参，称作third_request,
