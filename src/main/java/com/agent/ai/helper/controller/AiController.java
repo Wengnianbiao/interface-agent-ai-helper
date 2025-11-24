@@ -25,10 +25,10 @@ public class AiController {
     @Resource
     private AiCodeHelper aiCodeHelper;
 
-    @PostMapping("{bizType}/chat")
+    @PostMapping("/chat")
     @ResponseBody
-    public String chatWithBizType(@PathVariable String bizType, @RequestBody BizChatRequest request) {
-        return aiCodeHelper.chatWithBizType(bizType, request.getRequestFormatter(), request.getResponseFormatter());
+    public String chatWithBizType(@RequestBody BizChatRequest request) {
+        return aiCodeHelper.chatWithBizType(request.getBizType(), request.getRequestFormatter(), request.getResponseFormatter());
     }
 
     @PostMapping("/chat-pdf")

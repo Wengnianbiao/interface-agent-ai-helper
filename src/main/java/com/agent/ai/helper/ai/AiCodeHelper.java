@@ -6,8 +6,6 @@ import dev.langchain4j.data.message.SystemMessage;
 import dev.langchain4j.data.message.UserMessage;
 import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.model.chat.request.ChatRequest;
-import dev.langchain4j.model.chat.request.ResponseFormat;
-import dev.langchain4j.model.chat.request.ResponseFormatType;
 import dev.langchain4j.model.chat.response.ChatResponse;
 import io.micrometer.common.util.StringUtils;
 import jakarta.annotation.Resource;
@@ -36,12 +34,6 @@ public class AiCodeHelper {
                 .build();
         ChatResponse chatResponse = qwenChatModel.chat(chatRequest);
         log.info("chat(): {}", chatResponse);
-        AiMessage aiMessage = chatResponse.aiMessage();
-        return aiMessage.text();
-    }
-
-    public String chatWithMessage(UserMessage userMessage) {
-        ChatResponse chatResponse = qwenChatModel.chat(userMessage);
         AiMessage aiMessage = chatResponse.aiMessage();
         return aiMessage.text();
     }

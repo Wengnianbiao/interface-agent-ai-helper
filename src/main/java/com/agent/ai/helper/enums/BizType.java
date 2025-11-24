@@ -9,7 +9,23 @@ public enum BizType {
      * 建档
      */
     CREATE_ARCHIVE,
-    SYNC_HIS_CHAG_SHEET;
+
+    /**
+     * 同步申请单
+     */
+    SYNC_APPLY,
+
+    /**
+     * 删除申请单
+     */
+    DELETE_APPLY,
+
+    /**
+     * 同步账单
+     */
+    SYNC_CHAG;
+
+
 
     /**
      * 根据字符串获取业务类型枚举

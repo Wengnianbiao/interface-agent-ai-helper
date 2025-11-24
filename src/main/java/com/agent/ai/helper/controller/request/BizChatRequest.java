@@ -9,6 +9,11 @@ import lombok.Data;
 public class BizChatRequest {
 
     /**
+     * 业务类型
+     */
+    private String bizType;
+
+    /**
      * 请求格式化,可以是JSON或者XML
      */
     private String requestFormatter;
