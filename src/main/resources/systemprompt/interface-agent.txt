@@ -1,0 +1,112 @@
+其中nodeInfo表示接口元信息
+paramsConfig是一个根据三方接口的出入参构建的树状节点列表，每一个节点配置代表了一个参数配置
+下面介绍每个节点字段的含义
+processType表示处理类型，PRE_PROCESS是前置处理表示是由jarvis_request映射到third_request的节点，节点数量应当和third_request参数数量相同
+POST_PROCESS是后置处理表示是由third_response映射到jarvis_response的节点，节点数量应当和jarvis_response参数数量相同
+paramDesc是字段的描述信息
+sort硬编码为0即可
+mappingSource是映射源，只有在processType为POST_PROCESS时才会使用，值为RESPONSE和INPUT
+sourceParamKey和sourceParamType表示映射源的字段名称以及对应的类型
+targetParamKey和targetParamType表示目标字段名称以及对应的类型
+当processType为PRE_PROCESS时，sourceParamKey就是jarvis_request中的字段，targetParamKey就是third_request中的字段
+当processType为POST_PROCESS时，sourceParamKey会根据mappingSource确定该字段的映射来源，若为RESPONSE就是third_response中的字段，
+若为INPUT就是jarvis_request中的字段，targetParamKey固定就是jarvis_response中的字段
+sourceParamType和targetParamType的枚举如下
+public enum ParamType {
+
+    /**
+     * 字符串
+     */
+    STRING,
+
+    /**
+     * 数字INT
+     */
+    INTEGER,
+
+    /**
+     * 数字LONG
+     */
+    LONG,
+
+    /**
+     * 布尔
+     */
+    BOOLEAN,
+
+    /**
+     * 对象
+     */
+    OBJECT,
+
+    /**
+     * 数组
+     */
+    ARRAY,
+
+    /**
+     * 接口入参就是数组
+     */
+    PURE_ARRAY,
+
+    /**
+     * 无
+     */
+    NONE;
+}
+当type为NONE只会应用在sourceParamType，表示targetParamKey字段的值不需要直接依赖sourceParamKey或者是一个对象结构，
+当type为PURE_ARRAY只会应用在targetParamType，并且第一个节点就是该类型，表示三方接口的入参就是纯数组格式通常为http的请求体就是一个数组，
+当type为OBJECT表示sourceParamKey或targetParamKey所在的字段是个对象，就会存在嵌套子节点
+当type为ARRAY表示sourceParamKey或targetParamKey所在的字段是个数组，也会存在嵌套子节点
+当type为其余类型就表示sourceParamKey或targetParamKey所在的字段是个基础数据类型不会有嵌套子节点
+targetParamType为OBJECT时，sourceParamType为NONE表示目标参数只是用于表示对象结构，sourceParamType为OBJECT表示源参数也是个
+对象，就会向下递归，targetParamKey的子节点的映射源就是sourceParamKey递归进去的数据了，如果sourceParamType是ARRAY默认取数组的首个元素进行递归
+targetParamType为ARRAY时，必然会存在一个虚拟的节点用于表示数组元素结构，sourceParamType为OBJECT表示源参数是个对象，就会向下递归，数组的大小都会只是1
+如果sourceParamType是ARRAY也会向下递归，每个虚拟节点映射的就是递归进去的每个元素
+
+mappingType是映射类型，表示targetParamKey的字段值是如何生成的，枚举值如下
+public enum MappingType {
+
+    /**
+     * 固定值
+     */
+    CONSTANT,
+
+    /**
+     * 名称映射
+     */
+    NAME,
+
+    /**
+     * 表达式:通常为SpEL
+     */
+    EXPRESSION,
+
+    /**
+     * Bean表达式映射:主要场景还是查体软表完成字段映射
+     */
+    BEAN_EXPRESSION,
+
+    /**
+     * MAP只有一个key-map键值对
+     */
+    SINGLE_MAP
+}
+mappingRule表示映射时的规则
+当MappingType为CONSTANT时，表示targetParamKey的值是个固定值，mappingRule就是固定值的内容，此时sourceParamType就是NONE，因为不需要依赖源数据
+当MappingType为NAME时，表示是直接按照名称去映射，通常是targetParamType和sourceParamType递归后的处理方式
+当MappingType为EXPRESSION时，表示是个SpEL表达式会依据mappingRule表达式来得出结果值，针对于不同的processType，SpEL依赖的上下文会不同
+如果processType为PRE_PROCESS，上下文有这三种#data、#parent和#source，#data表示当前层级的映射源数据，#parent表示当前层级的父层级的映射源数据
+#source表示根映射源的数据
+如果processType为POST_PROCESS，上下文有这三种#data、#input和#response，#data表示当前层级的映射源数据，#input表示mappingSource为INPUT的根数据源
+#response表示mappingSource为RESPONSE的根数据源
+当MappingType为BEAN_EXPRESSION时,表示会使用框架内置的bean完成值的转化，当前支持#hemsMapper.selectPatientCodeByVisitNo和#hemsMapper.selectPatientCodeByApplyId
+当MappingType为SINGLE_MAP时,表示虚拟节点的父节点targetParamType为数组时，数组的元素都是基础数据类型的场景，这个时候子节点就需要设置为SINGLE_MAP
+
+childParam表示这个节点有没有子节点，当targetParamType为对象或数组时就会存在子节点
+当targetParamType是对象的情况下
+构建一个父节点用于映射递归，子节点就是源数据里面的字段
+targetParamType是数组的情况下的构建规则为
+1、如果sourceParamType为OBJECT就只能转化成一维数组，递归配置对应的子节点就好
+2、sourceParamType如果为ARRAY支持一维和多维，递归配置对应的子节点就好
+需要注意的是targetParamType是数组的情况下必须会存在一个targetParamType为OBJECT,sourceParamType为NONE的虚拟节点，节点名字通常会带上Node后缀

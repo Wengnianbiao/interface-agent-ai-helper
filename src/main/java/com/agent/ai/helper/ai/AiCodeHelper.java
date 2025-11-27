@@ -28,7 +28,7 @@ public class AiCodeHelper {
         SystemMessage systemMessage = SystemMessage.from(systemPrompt);
         String userMessageOfString = PromptUtil.generateUserPrompt(requestFormatter, responseFormatter);
         UserMessage userMessage = UserMessage.from(userMessageOfString);
-        log.info("chat(): {}", userMessage);
+        log.info("当前业务类型为:{},chat message: {}", bizType, userMessage);
         ChatRequest chatRequest = ChatRequest.builder()
                 .messages(systemMessage, userMessage)
                 .build();

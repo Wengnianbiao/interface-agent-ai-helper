@@ -1,311 +1,241 @@
 以下是申请单同步接口的调用链路
 首先是上游的入参，称作jarvis_request，它是基于json的数据格式
 {
-    "items" : [ {
-      "hisDetailId" : null,
-      "presId" : "595322",
-      "isConsum" : 0,
-      "departType" : "LIS",
-      "interfaceCode" : "51",
-      "idSampleType" : 138,
-      "idDepart" : 19,
-      "isFeeType" : "0",
-      "sampleType" : "1",
-      "sampleName" : "血液",
-      "sampleCode" : "1012",
-      "feeItemName" : "血常规（五分类）",
-      "discount" : "1.00000",
-      "price" : 1360.00,
-      "priceYuan" : 13.60,
-      "toPayPrice" : 1360.00,
-      "isFeeState" : 0,
-      "originalPrice" : 1360.00,
-      "originalPriceYuan" : 13.60,
-      "factPrice" : 1360.00,
-      "factPriceYuan" : 13.60,
-      "idPatientFeeItem" : "158313",
-      "idFeeItem" : "1151",
-      "applyId" : "80158313",
-      "barCode" : null,
-      "departName" : "检验科",
-      "ddInterfaceCode1" : "1062",
-      "ddInterfaceCode2" : null,
-      "ddInterfaceCode3" : null,
-      "ddInterfaceCode4" : null,
-      "ddInterfaceCode5" : null,
-      "dfiInterfaceCode1" : "51",
-      "dfiInterfaceCode2" : null,
-      "dfiInterfaceCode3" : null,
-      "dfiInterfaceCode4" : null,
-      "dfiInterfaceCode5" : null,
-      "dfiInterfaceCode6" : null,
-      "dfiInterfaceCode7" : null,
-      "dfiInterfaceCode8" : null,
-      "dfiInterfaceCode9" : null,
-      "dfiInterfaceCode10" : null,
-      "number" : "zqf0558",
-      "loginName" : "zqf0558",
-      "userName" : "朱秋芳",
-      "idRegister" : 722
-    }, {
-      "hisDetailId" : null,
-      "presId" : "595322",
-      "isConsum" : 0,
-      "departType" : "PACS",
-      "interfaceCode" : "1237",
-      "idSampleType" : null,
-      "idDepart" : 67,
-      "isFeeType" : "0",
-      "sampleType" : null,
-      "sampleName" : null,
-      "sampleCode" : null,
-      "feeItemName" : "常规心电图检查",
-      "discount" : "1.00000",
-      "price" : 2000.00,
-      "priceYuan" : 20.00,
-      "toPayPrice" : 2000.00,
-      "isFeeState" : 0,
-      "originalPrice" : 2000.00,
-      "originalPriceYuan" : 20.00,
-      "factPrice" : 2000.00,
-      "factPriceYuan" : 20.00,
-      "idPatientFeeItem" : "158314",
-      "idFeeItem" : "744",
-      "applyId" : "80158314",
-      "barCode" : null,
-      "departName" : "心电图室",
-      "ddInterfaceCode1" : "1058",
-      "ddInterfaceCode2" : null,
-      "ddInterfaceCode3" : null,
-      "ddInterfaceCode4" : null,
-      "ddInterfaceCode5" : null,
-      "dfiInterfaceCode1" : "1237",
-      "dfiInterfaceCode2" : "",
-      "dfiInterfaceCode3" : "",
-      "dfiInterfaceCode4" : "",
-      "dfiInterfaceCode5" : "",
-      "dfiInterfaceCode6" : null,
-      "dfiInterfaceCode7" : null,
-      "dfiInterfaceCode8" : null,
-      "dfiInterfaceCode9" : null,
-      "dfiInterfaceCode10" : null,
-      "number" : "zqf0558",
-      "loginName" : "zqf0558",
-      "userName" : "朱秋芳",
-      "idRegister" : 722
-    }, {
-      "hisDetailId" : null,
-      "presId" : "595322",
-      "isConsum" : 0,
-      "departType" : "PACS",
-      "interfaceCode" : "1258",
-      "idSampleType" : null,
-      "idDepart" : 18,
-      "isFeeType" : "0",
-      "sampleType" : null,
-      "sampleName" : null,
-      "sampleCode" : null,
-      "feeItemName" : "胸部后前位",
-      "discount" : "1.00000",
-      "price" : 3900.00,
-      "priceYuan" : 39.00,
-      "toPayPrice" : 3900.00,
-      "isFeeState" : 0,
-      "originalPrice" : 3900.00,
-      "originalPriceYuan" : 39.00,
-      "factPrice" : 3900.00,
-      "factPriceYuan" : 39.00,
-      "idPatientFeeItem" : "158315",
-      "idFeeItem" : "907",
-      "applyId" : "80158315",
-      "barCode" : null,
-      "departName" : "放射科DR",
-      "ddInterfaceCode1" : "1063",
-      "ddInterfaceCode2" : null,
-      "ddInterfaceCode3" : null,
-      "ddInterfaceCode4" : null,
-      "ddInterfaceCode5" : null,
-      "dfiInterfaceCode1" : "1258",
-      "dfiInterfaceCode2" : null,
-      "dfiInterfaceCode3" : null,
-      "dfiInterfaceCode4" : null,
-      "dfiInterfaceCode5" : null,
-      "dfiInterfaceCode6" : null,
-      "dfiInterfaceCode7" : null,
-      "dfiInterfaceCode8" : null,
-      "dfiInterfaceCode9" : null,
-      "dfiInterfaceCode10" : null,
-      "number" : "zqf0558",
-      "loginName" : "zqf0558",
-      "userName" : "朱秋芳",
-      "idRegister" : 722
-    }, {
-      "hisDetailId" : null,
-      "presId" : "595322",
-      "isConsum" : 1,
-      "departType" : "OUTSEND",
-      "interfaceCode" : "14020090500",
-      "idSampleType" : null,
-      "idDepart" : 26,
-      "isFeeType" : "0",
-      "sampleType" : null,
-      "sampleName" : null,
-      "sampleCode" : null,
-      "feeItemName" : "计算机图文报告费",
-      "discount" : "1.00000",
-      "price" : 800.00,
-      "priceYuan" : 8.00,
-      "toPayPrice" : 800.00,
-      "isFeeState" : 0,
-      "originalPrice" : 800.00,
-      "originalPriceYuan" : 8.00,
-      "factPrice" : 800.00,
-      "factPriceYuan" : 8.00,
-      "idPatientFeeItem" : "158316",
-      "idFeeItem" : "1250",
-      "applyId" : "80158316",
-      "barCode" : null,
-      "departName" : "材料费",
-      "ddInterfaceCode1" : "1058",
-      "ddInterfaceCode2" : null,
-      "ddInterfaceCode3" : null,
-      "ddInterfaceCode4" : null,
-      "ddInterfaceCode5" : null,
-      "dfiInterfaceCode1" : "14020090500",
-      "dfiInterfaceCode2" : null,
-      "dfiInterfaceCode3" : null,
-      "dfiInterfaceCode4" : null,
-      "dfiInterfaceCode5" : null,
-      "dfiInterfaceCode6" : null,
-      "dfiInterfaceCode7" : null,
-      "dfiInterfaceCode8" : null,
-      "dfiInterfaceCode9" : null,
-      "dfiInterfaceCode10" : null,
-      "number" : "zqf0558",
-      "loginName" : "zqf0558",
-      "userName" : "朱秋芳",
-      "idRegister" : 722
-    } ],
-    "patientInfo" : {
-      "sex" : "2",
-      "vpInvoiceTitle" : null,
-      "vpSocialCode" : null,
-      "age" : 54,
-      "marriage" : "3",
-      "identitycard" : "330502197101062226",
-      "cardType" : "1",
-      "phone" : "18367276320",
-      "birthday" : "1971-01-06",
-      "hisOrgId" : null,
-      "address" : "浙江省湖州市吴兴区滨湖街道大钱村唐家浒２０号",
-      "patientName" : "蔡培勤",
-      "patientCode" : "2504280032",
-      "hisPatientId" : "85184",
-      "visitNo" : "2504280032",
-      "userType" : 0,
-      "orgName" : "",
-      "registrationExtend1" : "330502197101062226",
-      "registrationExtend2" : "2025007226",
-      "registrationExtend3" : null,
-      "registertime" : "2025-04-28 08:00:55",
-      "physicalTypes" : "physical:types:O",
-      "physicalTypeName" : "入职体检"
+    "items": [
+        {
+            "presId": "595322",
+            "isConsum": 0,
+            "departType": "PACS",
+            "interfaceCode": "1237",
+            "idDepart": 67,
+            "isFeeType": "0",
+            "feeItemName": "常规心电图检查",
+            "discount": "1.00000",
+            "price": 2000,
+            "priceYuan": 20,
+            "toPayPrice": 2000,
+            "isFeeState": 0,
+            "originalPrice": 2000,
+            "originalPriceYuan": 20,
+            "factPrice": 2000,
+            "factPriceYuan": 20,
+            "idPatientFeeItem": "158314",
+            "idFeeItem": "744",
+            "applyId": "80158314",
+            "departName": "心电图室",
+            "ddInterfaceCode1": "1058",
+            "dfiInterfaceCode1": "1237",
+            "dfiInterfaceCode2": "",
+            "dfiInterfaceCode3": "",
+            "dfiInterfaceCode4": "",
+            "dfiInterfaceCode5": "",
+            "number": "zqf0558",
+            "loginName": "zqf0558",
+            "userName": "朱秋芳",
+            "idRegister": 722
+        },
+        {
+            "presId": "595322",
+            "isConsum": 0,
+            "departType": "PACS",
+            "interfaceCode": "1258",
+            "idDepart": 18,
+            "isFeeType": "0",
+            "feeItemName": "胸部后前位",
+            "discount": "1.00000",
+            "price": 3900,
+            "priceYuan": 39,
+            "toPayPrice": 3900,
+            "isFeeState": 0,
+            "originalPrice": 3900,
+            "originalPriceYuan": 39,
+            "factPrice": 3900,
+            "factPriceYuan": 39,
+            "idPatientFeeItem": "158315",
+            "idFeeItem": "907",
+            "applyId": "80158315",
+            "departName": "放射科DR",
+            "ddInterfaceCode1": "1063",
+            "dfiInterfaceCode1": "1258",
+            "number": "zqf0558",
+            "loginName": "zqf0558",
+            "userName": "朱秋芳",
+            "idRegister": 722
+        }
+    ],
+    "patientInfo": {
+        "sex": "2",
+        "age": 54,
+        "marriage": "3",
+        "identitycard": "330502197101062226",
+        "cardType": "1",
+        "phone": "18367276320",
+        "birthday": "1971-01-06",
+        "address": "浙江省湖州市吴兴区滨湖街道大钱村唐家浒２０号",
+        "patientName": "蔡培勤",
+        "patientCode": "2504280032",
+        "hisPatientId": "85184",
+        "visitNo": "2504280032",
+        "userType": 0,
+        "orgName": "",
+        "registrationExtend1": "330502197101062226",
+        "registrationExtend2": "2025007226",
+        "registertime": "2025-04-28 08:00:55",
+        "physicalTypes": "physical:types:O",
+        "physicalTypeName": "入职体检"
     },
-    "doctorInfo" : {
-      "idUser" : 722,
-      "userName" : "朱秋芳",
-      "number" : "zqf0558"
+    "doctorInfo": {
+        "idUser": 722,
+        "userName": "朱秋芳",
+        "number": "zqf0558"
     }
-  }
+}
 
 然后这是上游建档接口要求的响应出参，称作jarvis_response
 {
-  "code": "200",
-  "message": "成功",
-  "rsp": {
-    "outPatientCode":"his系统的客户id",
-    "visitNo":"客户的就诊卡号 VISIT_NO",
-  }
+    "code": "200",
+    "message": "成功",
+    "rsp": {
+        "items": [
+            {
+                "applyId": "2025092900000115",
+                "idPatientFeeItem": "46243"
+            },
+            {
+                "applyId": "2025092900000116",
+                "idPatientFeeItem": "46244"
+            }
+        ]
+    }
 }
 
-接着是三方建档接口的入参，称作third_request,它可以是xml、也可以是json，在请求发送后都会转化成Map<String,Object>的结构
+接着是三方接口的入参，称作third_request,它可以是xml、也可以是json，在请求发送后agent框架都会将其转化成Map<String,Object>的结构
 这是json的案例
 {
-   "patientCode": "体检编号",
-   "patientId": "病人 ID",
-   "name": "姓名",
-   "sex": "性别",
-   "age": "年龄",
-   "birthDate": "出生日期",
-   "cardType": "证件类型",
-   "cardId": "证件编号",
-   "address": "家庭地址",
-   "phone": "联系电话",
-   "marital": "婚姻状况",
-   "nation": "民族",
-   "country": "国籍",
-   "education": "学历",
-   "contactName": "联系人",
-   "contactPhone": "联系人电话",
-   "contactAddress": "联系人地址",
-   "orgId": "合约单位 ID",
-   "orgName": "合约单位名称"
+    "birthDay": "1971-01-06",
+    "clinicId": "2504280032",
+    "patientId": "85184",
+    "sex": "2",
+    "name": "蔡培勤",
+    "orders": [
+        {
+            "sourceId": "80158314",
+            "ordersId": "1237",
+            "ordersDept": "1058",
+            "executeDept": "1058",
+            "ordersManId": "zqf0558",
+            "ordersDate": "2025-11-26 14:07:36",
+            "ordersName": "常规心电图检查",
+            "checkType": "",
+            "price": "20.0",
+            "factPrice": "20.0"
+        },
+        {
+            "sourceId": "80158315",
+            "ordersId": "1258",
+            "ordersDept": "1063",
+            "executeDept": "1063",
+            "ordersManId": "zqf0558",
+            "ordersDate": "2025-11-26 14:07:36",
+            "ordersName": "胸部后前位",
+            "price": "39.0",
+            "factPrice": "39.0"
+        }
+    ],
+    "identitycard": "330502197101062226",
+    "age": "54",
+    "patientCode": "2504280032"
 }
 这是xml的案例
 <HrRequest>
-    <Head>
-        <TradeCode>PAT202</TradeCode>
-        <BranchCode>01</BranchCode>
-        <TradeTime>2025-10-31 16:36:20</TradeTime>
-        <SystemCode>TJ</SystemCode>
-        <HipKeyNo>eec5775dc57090fe9dfa43a8675bc2b6</HipKeyNo>
-        <TradeNo/>
-    </Head>
     <Body>
-        <patName>测试账号</patName>
-        <birthday>1972-02-25</birthday>
-        <idCard>330511197202254629</idCard>
-        <phoneNumber>13059970500</phoneNumber>
-        <companyName>湖州市机关单位</companyName>
-        <operatorId>cym0555</operatorId>
-        <operatorName>陈元梅</operatorName>
-        <type>1</type>
-        <TjSerialNo>2508190055</TjSerialNo>
-        <visitNo/>
-        <qrCode/>
-        <cardType>0</cardType>
-        <physicalType>2</physicalType>
-        <regDate>2025-08-19 08:28:01</regDate>
-        <TjNo>10011081</TjNo>
-        <sex>女</sex>
-        <taxNo>12324243</taxNo>
-        <NMFlag>0</NMFlag>
+        <patName>蔡培勤</patName>
+        <VisitNo>2504280032</VisitNo>
+        <TjSerialNo>2504280032</TjSerialNo>
+        <PatSex>女</PatSex>
+        <PhoneNo>18367276320</PhoneNo>
+        <PatAge>54</PatAge>
+        <ApplyTime>2025-11-26 14:28:02</ApplyTime>
+        <ApplyDeptName>体检中心</ApplyDeptName>
+        <ApplyDeptCode>2021</ApplyDeptCode>
+        <ApplyDrCode>zqf0558</ApplyDrCode>
+        <ApplyDrName>朱秋芳</ApplyDrName>
+        <RealTotalCost/>
+        <ClinicDiagName>体检</ClinicDiagName>
+        <ApplyStatus>1</ApplyStatus>
+        <ChargeFlag>1</ChargeFlag>
+        <PatientID>85184</PatientID>
+        <GroupFlag>2</GroupFlag>
+        <ChargeType>2</ChargeType>
+        <ExamPurpose>体检</ExamPurpose>
+        <Items>
+            <ItemsList>
+                <ExecDeptName>心电图室</ExecDeptName>
+                <ItemCode>1237</ItemCode>
+                <ItemName>常规心电图检查</ItemName>
+                <Cost>20.0</Cost>
+                <SampleName/>
+                <ExecDeptCode>1058</ExecDeptCode>
+                <TjApplyNo>158314</TjApplyNo>
+                <ItemNo/>
+            </ItemsList>
+            <ItemsList>
+                <ExecDeptName>放射科DR</ExecDeptName>
+                <ItemCode>1258</ItemCode>
+                <ItemName>胸部后前位</ItemName>
+                <Cost>39.0</Cost>
+                <SampleName/>
+                <ExecDeptCode>1063</ExecDeptCode>
+                <TjApplyNo>158315</TjApplyNo>
+                <ItemNo/>
+            </ItemsList>
+        </Items>
     </Body>
+    <Head>
+        <BranchCode>01</BranchCode>
+        <TradeTime>2025-11-26 14:28:02</TradeTime>
+        <HospitalCode/>
+        <TradeCode>EXAM105</TradeCode>
+    </Head>
 </HrRequest>
 
 以及三方接口的响应，称作third_response,同样的既可以是xml，也可以是json
 这是json格式的响应
 {
-  "returnCode": "1",
-  "errorMessage": "成功",
-  "data": {
-    "patientId": "病人 ID",
-    "clinicId": "门诊号"
-  }
+    "returnCode": "1",
+    "errorMessage": "成功",
+    "data": [
+        {
+            "sourceId": "80158314",
+            "medTechRequestId": "9080158314"
+        },
+        {
+            "sourceId": "80158315",
+            "medTechRequestId": "9080158315"
+        }
+    ]
 }
 这是xml格式的响应
-<Body>
-    <PatientID>030001529</PatientID>
-    <VisitNo>20251014000103</VisitNo>
-</Body>
-<Head>
-    <HipSessionId>12727541</HipSessionId>
+<root>
+  <Head>
+    <TradeTime>2025-09-29 14:20:25</TradeTime>
+    <HipSessionId>11859865</HipSessionId>
     <SystemCode>TJ</SystemCode>
-    <TradeCode>PAT202</TradeCode>
     <TradeMessage>成功</TradeMessage>
+    <TradeCode>EXAM105</TradeCode>
     <TradeStatus>AA</TradeStatus>
-    <TradeTime>2025-10-14 15:10:43</TradeTime>
-</Head>
+  </Head>
+  <Body>
+    <BodyList>
+      <TJApplyNo>46243</TJApplyNo>
+      <ExamNo>2025092900000115</ExamNo>
+    </BodyList>
+    <BodyList>
+      <TJApplyNo>46244</TJApplyNo>
+      <ExamNo>2025092900000116</ExamNo>
+    </BodyList>
+  </Body>
+</root>
 
 现在有个interface-agent平台，它的作用是将上游的入参jarvis_request转化成三方接口需要的入参third_request
 并把三方接口的响应third_response转化成上游的jarvis_response响应，进行完成接口的配置化对接
@@ -313,264 +243,300 @@
 这是针对上述案例json的配置信息
 {
   "nodeInfo": {
-    "nodeName": "创建档案",
+    "nodeName": "发送PACS申请单",
     "nodeType": "HTTP"
   },
   "paramsConfig": [
     {
       "processType": "PRE_PROCESS",
-      "sourceParamKey": "patientCode",
-      "sourceParamType": "STRING",
-      "paramDesc": "体检编号",
-      "targetParamKey": "patientCode",
-      "targetParamType": "STRING",
-      "sort": 1,
-      "mappingType": "NAME",
-      "mappingSource": "RESPONSE",
-      "mappingRule": null,
-      "childParam": null
-    },
-    {
-      "processType": "PRE_PROCESS",
-      "sourceParamKey": "hisPatientId",
-      "sourceParamType": "STRING",
-      "paramDesc": "病人 ID",
+      "sourceParamKey": "patientInfo",
+      "sourceParamType": "OBJECT",
+      "paramDesc": "客户hisID",
       "targetParamKey": "patientId",
       "targetParamType": "STRING",
+      "keepSingleElementKey": null,
       "sort": 1,
-      "mappingType": "NAME",
-      "mappingSource": "RESPONSE",
-      "mappingRule": null,
+      "mappingType": "EXPRESSION",
+      "mappingSource": null,
+      "mappingRule": "#data[hisPatientId]",
       "childParam": null
     },
     {
       "processType": "PRE_PROCESS",
-      "sourceParamKey": "patientName",
-      "sourceParamType": "STRING",
-      "paramDesc": "姓名",
+      "sourceParamKey": "patientInfo",
+      "sourceParamType": "OBJECT",
+      "paramDesc": null,
+      "targetParamKey": "clinicId",
+      "targetParamType": "STRING",
+      "keepSingleElementKey": null,
+      "sort": 1,
+      "mappingType": "EXPRESSION",
+      "mappingSource": null,
+      "mappingRule": "#data[visitNo]",
+      "childParam": null
+    },
+    {
+      "processType": "PRE_PROCESS",
+      "sourceParamKey": "patientInfo",
+      "sourceParamType": "OBJECT",
+      "paramDesc": null,
+      "targetParamKey": "patientCode",
+      "targetParamType": "STRING",
+      "keepSingleElementKey": null,
+      "sort": 1,
+      "mappingType": "EXPRESSION",
+      "mappingSource": null,
+      "mappingRule": "#data[patientCode]",
+      "childParam": null
+    },
+    {
+      "processType": "PRE_PROCESS",
+      "sourceParamKey": "patientInfo",
+      "sourceParamType": "OBJECT",
+      "paramDesc": null,
       "targetParamKey": "name",
       "targetParamType": "STRING",
-      "sort": 1,
-      "mappingType": "NAME",
-      "mappingSource": "RESPONSE",
-      "mappingRule": null,
-      "childParam": null
-    },
-    {
-      "processType": "PRE_PROCESS",
-      "sourceParamKey": "age",
-      "sourceParamType": "INTEGER",
-      "paramDesc": "年龄",
-      "targetParamKey": "age",
-      "targetParamType": "INTEGER",
-      "sort": 1,
-      "mappingType": "NAME",
-      "mappingSource": "RESPONSE",
-      "mappingRule": null,
-      "childParam": null
-    },
-    {
-      "processType": "PRE_PROCESS",
-      "sourceParamKey": "birthday",
-      "sourceParamType": "STRING",
-      "paramDesc": "出生日期",
-      "targetParamKey": "birthDate",
-      "targetParamType": "STRING",
-      "sort": 1,
-      "mappingType": "NAME",
-      "mappingSource": "RESPONSE",
-      "mappingRule": null,
-      "childParam": null
-    },
-    {
-      "processType": "PRE_PROCESS",
-      "sourceParamKey": "cardType",
-      "sourceParamType": "STRING",
-      "paramDesc": "证件类型",
-      "targetParamKey": "cardType",
-      "targetParamType": "STRING",
-      "sort": 1,
-      "mappingType": "NAME",
-      "mappingSource": "RESPONSE",
-      "mappingRule": null,
-      "childParam": null
-    },
-    {
-      "processType": "PRE_PROCESS",
-      "sourceParamKey": "identitycard",
-      "sourceParamType": "STRING",
-      "paramDesc": "证件编号",
-      "targetParamKey": "cardId",
-      "targetParamType": "STRING",
-      "sort": 1,
-      "mappingType": "NAME",
-      "mappingSource": "RESPONSE",
-      "mappingRule": null,
-      "childParam": null
-    },
-    {
-      "processType": "PRE_PROCESS",
-      "sourceParamKey": "address",
-      "sourceParamType": "STRING",
-      "paramDesc": "家庭地址",
-      "targetParamKey": "address",
-      "targetParamType": "STRING",
-      "sort": 1,
-      "mappingType": "NAME",
-      "mappingSource": "RESPONSE",
-      "mappingRule": null,
-      "childParam": null
-    },
-    {
-      "processType": "PRE_PROCESS",
-      "sourceParamKey": "phone",
-      "sourceParamType": "STRING",
-      "paramDesc": "联系电话",
-      "targetParamKey": "phone",
-      "targetParamType": "STRING",
-      "sort": 1,
-      "mappingType": "NAME",
-      "mappingSource": "RESPONSE",
-      "mappingRule": null,
-      "childParam": null
-    },
-    {
-      "processType": "PRE_PROCESS",
-      "sourceParamKey": "marriage",
-      "sourceParamType": "STRING",
-      "paramDesc": "婚姻状况",
-      "targetParamKey": "marital",
-      "targetParamType": "STRING",
+      "keepSingleElementKey": null,
       "sort": 1,
       "mappingType": "EXPRESSION",
-      "mappingSource": "RESPONSE",
-      "mappingRule": "#data['marriage'] == null || #data['marriage'] == '' ) ? '未知' : (#data['marriage'] == '1' ? '未婚' : (#data['marriage'] == '2' ? '已婚' : '未知')",
+      "mappingSource": null,
+      "mappingRule": "#data[patientName]",
       "childParam": null
     },
     {
       "processType": "PRE_PROCESS",
-      "sourceParamKey": "nationName",
-      "sourceParamType": "STRING",
-      "paramDesc": "民族",
-      "targetParamKey": "nation",
+      "sourceParamKey": "patientInfo",
+      "sourceParamType": "OBJECT",
+      "paramDesc": null,
+      "targetParamKey": "age",
       "targetParamType": "STRING",
+      "keepSingleElementKey": null,
       "sort": 1,
-      "mappingType": "NAME",
-      "mappingSource": "RESPONSE",
-      "mappingRule": null,
+      "mappingType": "EXPRESSION",
+      "mappingSource": null,
+      "mappingRule": "#data[age]",
       "childParam": null
     },
     {
       "processType": "PRE_PROCESS",
-      "sourceParamKey": "country",
-      "sourceParamType": "STRING",
-      "paramDesc": "国籍",
-      "targetParamKey": "country",
-      "targetParamType": "STRING",
-      "sort": 1,
-      "mappingType": "NAME",
-      "mappingSource": "RESPONSE",
-      "mappingRule": null,
-      "childParam": null
-    },
-    {
-      "processType": "PRE_PROCESS",
-      "sourceParamKey": "education",
-      "sourceParamType": "STRING",
-      "paramDesc": "学历",
-      "targetParamKey": "education",
-      "targetParamType": "STRING",
-      "sort": 1,
-      "mappingType": "NAME",
-      "mappingSource": "RESPONSE",
-      "mappingRule": null,
-      "childParam": null
-    },
-    {
-      "processType": "PRE_PROCESS",
-      "sourceParamKey": "contactName",
-      "sourceParamType": "STRING",
-      "paramDesc": "联系人",
-      "targetParamKey": "contactName",
-      "targetParamType": "STRING",
-      "sort": 1,
-      "mappingType": "NAME",
-      "mappingSource": "RESPONSE",
-      "mappingRule": null,
-      "childParam": null
-    },
-    {
-      "processType": "PRE_PROCESS",
-      "sourceParamKey": "contactPhone",
-      "sourceParamType": "STRING",
-      "paramDesc": "联系人电话",
-      "targetParamKey": "contactPhone",
-      "targetParamType": "STRING",
-      "sort": 1,
-      "mappingType": "NAME",
-      "mappingSource": "RESPONSE",
-      "mappingRule": null,
-      "childParam": null
-    },
-    {
-      "processType": "PRE_PROCESS",
-      "sourceParamKey": "contactAddress",
-      "sourceParamType": "STRING",
-      "paramDesc": "联系人地址",
-      "targetParamKey": "contactAddress",
-      "targetParamType": "STRING",
-      "sort": 1,
-      "mappingType": "NAME",
-      "mappingSource": "RESPONSE",
-      "mappingRule": null,
-      "childParam": null
-    },
-    {
-      "processType": "PRE_PROCESS",
-      "sourceParamKey": "hisOrgId",
-      "sourceParamType": "STRING",
-      "paramDesc": "合约单位 ID",
-      "targetParamKey": "orgId",
-      "targetParamType": "STRING",
-      "sort": 1,
-      "mappingType": "NAME",
-      "mappingSource": "RESPONSE",
-      "mappingRule": null,
-      "childParam": null
-    },
-    {
-      "processType": "PRE_PROCESS",
-      "sourceParamKey": "orgName",
-      "sourceParamType": "STRING",
-      "paramDesc": "合约单位名称",
-      "targetParamKey": "orgName",
-      "targetParamType": "STRING",
-      "sort": 1,
-      "mappingType": "NAME",
-      "mappingSource": "RESPONSE",
-      "mappingRule": null,
-      "childParam": null
-    },
-    {
-      "processType": "PRE_PROCESS",
-      "sourceParamKey": "sex",
-      "sourceParamType": "STRING",
-      "paramDesc": "性别（0/null/3→未知，1→男，2→女）",
+      "sourceParamKey": "patientInfo",
+      "sourceParamType": "OBJECT",
+      "paramDesc": null,
       "targetParamKey": "sex",
       "targetParamType": "STRING",
+      "keepSingleElementKey": null,
       "sort": 1,
       "mappingType": "EXPRESSION",
-      "mappingSource": "RESPONSE",
-      "mappingRule": "#data['sex'] == null || #data['sex'] == '' ) ? '未知' : (#data['sex'] == '1' ? '未婚' : (#data['sex'] == '2' ? '已婚' : '未知')",
+      "mappingSource": null,
+      "mappingRule": "#data[sex]",
       "childParam": null
+    },
+    {
+      "processType": "PRE_PROCESS",
+      "sourceParamKey": "items",
+      "sourceParamType": "ARRAY",
+      "paramDesc": "申请单列表",
+      "targetParamKey": "orders",
+      "targetParamType": "ARRAY",
+      "keepSingleElementKey": null,
+      "sort": 1,
+      "mappingType": "NAME",
+      "mappingSource": null,
+      "mappingRule": null,
+      "childParam": [
+        {
+          "processType": "PRE_PROCESS",
+          "sourceParamKey": null,
+          "sourceParamType": "NONE",
+          "paramDesc": "申请单虚拟节点",
+          "targetParamKey": "orderNode",
+          "targetParamType": "OBJECT",
+          "keepSingleElementKey": null,
+          "sort": 1,
+          "mappingType": "NAME",
+          "mappingSource": null,
+          "mappingRule": null,
+          "childParam": [
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": "applyId",
+              "sourceParamType": "STRING",
+              "paramDesc": "体检系统申请单号",
+              "targetParamKey": "sourceId",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 1,
+              "mappingType": "NAME",
+              "mappingSource": null,
+              "mappingRule": null,
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": "dfiInterfaceCode1",
+              "sourceParamType": "STRING",
+              "paramDesc": "检查项目 ID",
+              "targetParamKey": "ordersId",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 1,
+              "mappingType": "NAME",
+              "mappingSource": null,
+              "mappingRule": null,
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": "sampleName",
+              "sourceParamType": "STRING",
+              "paramDesc": "标本名称",
+              "targetParamKey": "sample",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 1,
+              "mappingType": "NAME",
+              "mappingSource": null,
+              "mappingRule": "",
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": "ddInterfaceCode1",
+              "sourceParamType": "STRING",
+              "paramDesc": "申请科室 ID",
+              "targetParamKey": "ordersDept",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 1,
+              "mappingType": "NAME",
+              "mappingSource": null,
+              "mappingRule": null,
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": "ddInterfaceCode1",
+              "sourceParamType": "STRING",
+              "paramDesc": "执行科室 ID",
+              "targetParamKey": "executeDept",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 1,
+              "mappingType": "NAME",
+              "mappingSource": null,
+              "mappingRule": null,
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": "number",
+              "sourceParamType": "STRING",
+              "paramDesc": "申请人员 ID",
+              "targetParamKey": "ordersManId",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 1,
+              "mappingType": "NAME",
+              "mappingSource": null,
+              "mappingRule": null,
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": "ordersDate",
+              "sourceParamType": "STRING",
+              "paramDesc": "申请时间",
+              "targetParamKey": "ordersDate",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 1,
+              "mappingType": "EXPRESSION",
+              "mappingSource": null,
+              "mappingRule": "new java.text.SimpleDateFormat(\"yyyy-MM-dd HH:mm:ss\").format(new java.util.Date())\n",
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": "barCode",
+              "sourceParamType": "STRING",
+              "paramDesc": "条码号",
+              "targetParamKey": "barCode",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 1,
+              "mappingType": "NAME",
+              "mappingSource": null,
+              "mappingRule": null,
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": "feeItemName",
+              "sourceParamType": "STRING",
+              "paramDesc": "检查项目名称",
+              "targetParamKey": "ordersName",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 1,
+              "mappingType": "NAME",
+              "mappingSource": null,
+              "mappingRule": null,
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": "dfiInterfaceCode2",
+              "sourceParamType": "STRING",
+              "paramDesc": "CT、 DR、 MRI 等",
+              "targetParamKey": "checkType",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 1,
+              "mappingType": "NAME",
+              "mappingSource": null,
+              "mappingRule": null,
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": "priceYuan",
+              "sourceParamType": "STRING",
+              "paramDesc": "项目原价",
+              "targetParamKey": "price",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 1,
+              "mappingType": "NAME",
+              "mappingSource": null,
+              "mappingRule": null,
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": "factPriceYuan",
+              "sourceParamType": "STRING",
+              "paramDesc": "项目实际价格",
+              "targetParamKey": "factPrice",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 1,
+              "mappingType": "NAME",
+              "mappingSource": null,
+              "mappingRule": null,
+              "childParam": null
+            }
+          ]
+        }
+      ]
     },
     {
       "processType": "POST_PROCESS",
       "sourceParamKey": "returnCode",
       "sourceParamType": "STRING",
-      "paramDesc": "响应状态码转换：1->200，其他->-1",
+      "paramDesc": "响应状态码转化",
       "targetParamKey": "code",
       "targetParamType": "STRING",
+      "keepSingleElementKey": null,
       "sort": 1,
       "mappingType": "EXPRESSION",
       "mappingSource": "RESPONSE",
@@ -579,63 +545,125 @@
     },
     {
       "processType": "POST_PROCESS",
-      "sourceParamKey": "data",
-      "sourceParamType": "OBJECT",
-      "paramDesc": null,
-      "targetParamKey": "rsp",
-      "targetParamType": "OBJECT",
-      "sort": 1,
-      "mappingType": "NAME",
-      "mappingSource": "RESPONSE",
-      "mappingRule": null,
-      "childParam": [
-        {
-          "processType": "POST_PROCESS",
-          "sourceParamKey": "patientId",
-          "sourceParamType": "STRING",
-          "paramDesc": null,
-          "targetParamKey": "outPatientCode",
-          "targetParamType": "STRING",
-          "sort": 1,
-          "mappingType": "NAME",
-          "mappingSource": "RESPONSE",
-          "mappingRule": null,
-          "childParam": null
-        },
-        {
-          "processType": "POST_PROCESS",
-          "sourceParamKey": "clinicId",
-          "sourceParamType": "STRING",
-          "paramDesc": null,
-          "targetParamKey": "visitNo",
-          "targetParamType": "STRING",
-          "sort": 1,
-          "mappingType": "NAME",
-          "mappingSource": "RESPONSE",
-          "mappingRule": null,
-          "childParam": null
-        }
-      ]
-    },
-    {
-      "processType": "POST_PROCESS",
       "sourceParamKey": "errorMessage",
       "sourceParamType": "STRING",
       "paramDesc": null,
       "targetParamKey": "message",
       "targetParamType": "STRING",
+      "keepSingleElementKey": null,
       "sort": 1,
       "mappingType": "NAME",
       "mappingSource": "RESPONSE",
       "mappingRule": null,
       "childParam": null
+    },
+    {
+      "processType": "PRE_PROCESS",
+      "sourceParamKey": "patientInfo",
+      "sourceParamType": "OBJECT",
+      "paramDesc": "",
+      "targetParamKey": "birthDay",
+      "targetParamType": "STRING",
+      "keepSingleElementKey": null,
+      "sort": 1,
+      "mappingType": "EXPRESSION",
+      "mappingSource": null,
+      "mappingRule": "#data[birthday]",
+      "childParam": null
+    },
+    {
+      "processType": "PRE_PROCESS",
+      "sourceParamKey": "patientInfo",
+      "sourceParamType": "OBJECT",
+      "paramDesc": "身份证号",
+      "targetParamKey": "identitycard",
+      "targetParamType": "STRING",
+      "keepSingleElementKey": null,
+      "sort": 1,
+      "mappingType": "EXPRESSION",
+      "mappingSource": null,
+      "mappingRule": "#data[identitycard]",
+      "childParam": null
+    },
+    {
+      "processType": "POST_PROCESS",
+      "sourceParamKey": null,
+      "sourceParamType": "NONE",
+      "paramDesc": "rsp对象",
+      "targetParamKey": "rsp",
+      "targetParamType": "OBJECT",
+      "keepSingleElementKey": false,
+      "sort": 1,
+      "mappingType": "NAME",
+      "mappingSource": null,
+      "mappingRule": "",
+      "childParam": [
+        {
+          "processType": "POST_PROCESS",
+          "sourceParamKey": "items",
+          "sourceParamType": "ARRAY",
+          "paramDesc": null,
+          "targetParamKey": "items",
+          "targetParamType": "ARRAY",
+          "keepSingleElementKey": null,
+          "sort": 1,
+          "mappingType": "NAME",
+          "mappingSource": "INPUT",
+          "mappingRule": null,
+          "childParam": [
+            {
+              "processType": "POST_PROCESS",
+              "sourceParamKey": null,
+              "sourceParamType": "NONE",
+              "paramDesc": "申请单响应列表虚拟节点",
+              "targetParamKey": "itemNode",
+              "targetParamType": "OBJECT",
+              "keepSingleElementKey": null,
+              "sort": 1,
+              "mappingType": "NAME",
+              "mappingSource": "INPUT",
+              "mappingRule": null,
+              "childParam": [
+                {
+                  "processType": "POST_PROCESS",
+                  "sourceParamKey": "idPatientFeeItem",
+                  "sourceParamType": "STRING",
+                  "paramDesc": null,
+                  "targetParamKey": "idPatientFeeItem",
+                  "targetParamType": "STRING",
+                  "keepSingleElementKey": null,
+                  "sort": 1,
+                  "mappingType": "NAME",
+                  "mappingSource": "RESPONSE",
+                  "mappingRule": null,
+                  "childParam": null
+                },
+                {
+                  "processType": "POST_PROCESS",
+                  "sourceParamKey": "applyId",
+                  "sourceParamType": "STRING",
+                  "paramDesc": "",
+                  "targetParamKey": "applyId",
+                  "targetParamType": "STRING",
+                  "keepSingleElementKey": null,
+                  "sort": 1,
+                  "mappingType": "NAME",
+                  "mappingSource": "RESPONSE",
+                  "mappingRule": null,
+                  "childParam": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }
-这是针对xml的配置信息
+这是针对xml的配置信息，需要注意的是三方接口是xml格式的情况下，不需要处理出入参中的标签的属性值
 {
   "nodeInfo": {
-    "nodeName": "创建档案",
+    "nodeName": "发送PACS申请单",
     "nodeType": "WEBSERVICE"
   },
   "paramsConfig": [
@@ -669,12 +697,12 @@
     },
     {
       "processType": "POST_PROCESS",
-      "sourceParamKey": "Body",
-      "sourceParamType": "OBJECT",
+      "sourceParamKey": null,
+      "sourceParamType": "NONE",
       "paramDesc": "jarvis响应rsp",
       "targetParamKey": "rsp",
       "targetParamType": "OBJECT",
-      "keepSingleElementKey": null,
+      "keepSingleElementKey": false,
       "sort": 0,
       "mappingType": "NAME",
       "mappingSource": "RESPONSE",
@@ -682,31 +710,61 @@
       "childParam": [
         {
           "processType": "POST_PROCESS",
-          "sourceParamKey": "PatientID",
-          "sourceParamType": "STRING",
-          "paramDesc": "his的patientId",
-          "targetParamKey": "outPatientCode",
-          "targetParamType": "STRING",
+          "sourceParamKey": "Body",
+          "sourceParamType": "ARRAY",
+          "paramDesc": "jarvis响应items",
+          "targetParamKey": "items",
+          "targetParamType": "ARRAY",
           "keepSingleElementKey": null,
           "sort": 0,
           "mappingType": "NAME",
           "mappingSource": "RESPONSE",
           "mappingRule": null,
-          "childParam": null
-        },
-        {
-          "processType": "POST_PROCESS",
-          "sourceParamKey": "VisitNo",
-          "sourceParamType": "STRING",
-          "paramDesc": "his的visitNo",
-          "targetParamKey": "visitNo",
-          "targetParamType": "STRING",
-          "keepSingleElementKey": null,
-          "sort": 0,
-          "mappingType": "NAME",
-          "mappingSource": "RESPONSE",
-          "mappingRule": null,
-          "childParam": null
+          "childParam": [
+            {
+              "processType": "POST_PROCESS",
+              "sourceParamKey": null,
+              "sourceParamType": "NONE",
+              "paramDesc": "items数组的虚拟节点",
+              "targetParamKey": "itemNode",
+              "targetParamType": "OBJECT",
+              "keepSingleElementKey": false,
+              "sort": 0,
+              "mappingType": "NAME",
+              "mappingSource": "RESPONSE",
+              "mappingRule": null,
+              "childParam": [
+                {
+                  "processType": "POST_PROCESS",
+                  "sourceParamKey": "ExamNo",
+                  "sourceParamType": "STRING",
+                  "paramDesc": "申请单Id，用厂商的",
+                  "targetParamKey": "applyId",
+                  "targetParamType": "STRING",
+                  "keepSingleElementKey": null,
+                  "sort": 0,
+                  "mappingType": "NAME",
+                  "mappingSource": "RESPONSE",
+                  "mappingRule": null,
+                  "childParam": null
+                },
+                {
+                  "processType": "POST_PROCESS",
+                  "sourceParamKey": "TJApplyNo",
+                  "sourceParamType": "STRING",
+                  "paramDesc": "收费项id",
+                  "targetParamKey": "idPatientFeeItem",
+                  "targetParamType": "STRING",
+                  "keepSingleElementKey": null,
+                  "sort": 0,
+                  "mappingType": "NAME",
+                  "mappingSource": "RESPONSE",
+                  "mappingRule": null,
+                  "childParam": null
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -720,9 +778,432 @@
       "keepSingleElementKey": null,
       "sort": 0,
       "mappingType": "NAME",
-      "mappingSource": "RESPONSE",
+      "mappingSource": null,
       "mappingRule": null,
       "childParam": [
+        {
+          "processType": "PRE_PROCESS",
+          "sourceParamKey": null,
+          "sourceParamType": "NONE",
+          "paramDesc": "Body标签",
+          "targetParamKey": "Body",
+          "targetParamType": "OBJECT",
+          "keepSingleElementKey": null,
+          "sort": 0,
+          "mappingType": "NAME",
+          "mappingSource": null,
+          "mappingRule": null,
+          "childParam": [
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": "patientInfo",
+              "sourceParamType": "OBJECT",
+              "paramDesc": "姓名",
+              "targetParamKey": "patName",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 0,
+              "mappingType": "EXPRESSION",
+              "mappingSource": null,
+              "mappingRule": "#data[patientName]",
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": "patientInfo",
+              "sourceParamType": "OBJECT",
+              "paramDesc": "就诊号",
+              "targetParamKey": "VisitNo",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 0,
+              "mappingType": "EXPRESSION",
+              "mappingSource": null,
+              "mappingRule": "#data[visitNo]",
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": "patientInfo",
+              "sourceParamType": "OBJECT",
+              "paramDesc": "流水号，用patientCode",
+              "targetParamKey": "TjSerialNo",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 0,
+              "mappingType": "EXPRESSION",
+              "mappingSource": null,
+              "mappingRule": "#data[patientCode]",
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": "patientInfo",
+              "sourceParamType": "OBJECT",
+              "paramDesc": "性别",
+              "targetParamKey": "PatSex",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 0,
+              "mappingType": "EXPRESSION",
+              "mappingSource": null,
+              "mappingRule": "#data[sex] == '1' ? '男' : '女'",
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": "patientInfo",
+              "sourceParamType": "OBJECT",
+              "paramDesc": "联系电话",
+              "targetParamKey": "PhoneNo",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 0,
+              "mappingType": "EXPRESSION",
+              "mappingSource": null,
+              "mappingRule": "#data[phone]",
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": "patientInfo",
+              "sourceParamType": "OBJECT",
+              "paramDesc": "年龄",
+              "targetParamKey": "PatAge",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 0,
+              "mappingType": "EXPRESSION",
+              "mappingSource": null,
+              "mappingRule": "#data[age]",
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": null,
+              "sourceParamType": "NONE",
+              "paramDesc": "申请时间",
+              "targetParamKey": "ApplyTime",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 0,
+              "mappingType": "EXPRESSION",
+              "mappingSource": null,
+              "mappingRule": "new java.text.SimpleDateFormat(\"yyyy-MM-dd HH:mm:ss\").format(new java.util.Date())",
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": null,
+              "sourceParamType": "NONE",
+              "paramDesc": "申请科室，固定体检中心",
+              "targetParamKey": "ApplyDeptName",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 0,
+              "mappingType": "CONSTANT",
+              "mappingSource": null,
+              "mappingRule": "体检中心",
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": null,
+              "sourceParamType": "NONE",
+              "paramDesc": "申请科室code，固定2021",
+              "targetParamKey": "ApplyDeptCode",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 0,
+              "mappingType": "CONSTANT",
+              "mappingSource": null,
+              "mappingRule": "2021",
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": "doctorInfo",
+              "sourceParamType": "OBJECT",
+              "paramDesc": "申请医生代码",
+              "targetParamKey": "ApplyDrCode",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 0,
+              "mappingType": "EXPRESSION",
+              "mappingSource": null,
+              "mappingRule": "#data[number]",
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": "doctorInfo",
+              "sourceParamType": "OBJECT",
+              "paramDesc": "申请医生姓名",
+              "targetParamKey": "ApplyDrName",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 0,
+              "mappingType": "EXPRESSION",
+              "mappingSource": null,
+              "mappingRule": "#data[userName]",
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": null,
+              "sourceParamType": "NONE",
+              "paramDesc": "应收总金额，后续表达式算下",
+              "targetParamKey": "RealTotalCost",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 0,
+              "mappingType": "CONSTANT",
+              "mappingSource": null,
+              "mappingRule": null,
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": null,
+              "sourceParamType": "NONE",
+              "paramDesc": "临床诊断，固定值体检",
+              "targetParamKey": "ClinicDiagName",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 0,
+              "mappingType": "CONSTANT",
+              "mappingSource": null,
+              "mappingRule": "体检",
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": null,
+              "sourceParamType": "NONE",
+              "paramDesc": "申请单状态，固定值1已申请",
+              "targetParamKey": "ApplyStatus",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 0,
+              "mappingType": "CONSTANT",
+              "mappingSource": null,
+              "mappingRule": "1",
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": null,
+              "sourceParamType": "NONE",
+              "paramDesc": "收费标识，固定已收费，收费成功才会发送申请单",
+              "targetParamKey": "ChargeFlag",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 0,
+              "mappingType": "CONSTANT",
+              "mappingSource": null,
+              "mappingRule": "1",
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": "patientInfo",
+              "sourceParamType": "OBJECT",
+              "paramDesc": "his客户id",
+              "targetParamKey": "PatientID",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 0,
+              "mappingType": "EXPRESSION",
+              "mappingSource": null,
+              "mappingRule": "#data[hisPatientId]",
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": "patientInfo",
+              "sourceParamType": "OBJECT",
+              "paramDesc": "个团检标识",
+              "targetParamKey": "GroupFlag",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 0,
+              "mappingType": "EXPRESSION",
+              "mappingSource": null,
+              "mappingRule": "#data[userType] == '0' ? '1' : '2'",
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": "patientInfo",
+              "sourceParamType": "OBJECT",
+              "paramDesc": "收费类型",
+              "targetParamKey": "ChargeType",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 0,
+              "mappingType": "EXPRESSION",
+              "mappingSource": null,
+              "mappingRule": "#data[userType] == '0' ? '1' : '2'",
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": null,
+              "sourceParamType": "NONE",
+              "paramDesc": "检查目的",
+              "targetParamKey": "ExamPurpose",
+              "targetParamType": "STRING",
+              "keepSingleElementKey": null,
+              "sort": 0,
+              "mappingType": "CONSTANT",
+              "mappingSource": null,
+              "mappingRule": "体检",
+              "childParam": null
+            },
+            {
+              "processType": "PRE_PROCESS",
+              "sourceParamKey": "items",
+              "sourceParamType": "ARRAY",
+              "paramDesc": "Items标签",
+              "targetParamKey": "Items",
+              "targetParamType": "ARRAY",
+              "keepSingleElementKey": null,
+              "sort": 0,
+              "mappingType": "CONSTANT",
+              "mappingSource": null,
+              "mappingRule": null,
+              "childParam": [
+                {
+                  "processType": "PRE_PROCESS",
+                  "sourceParamKey": null,
+                  "sourceParamType": "NONE",
+                  "paramDesc": "ItemsLists标签",
+                  "targetParamKey": "ItemsList",
+                  "targetParamType": "OBJECT",
+                  "keepSingleElementKey": null,
+                  "sort": 0,
+                  "mappingType": "NAME",
+                  "mappingSource": null,
+                  "mappingRule": null,
+                  "childParam": [
+                    {
+                      "processType": "PRE_PROCESS",
+                      "sourceParamKey": "departName",
+                      "sourceParamType": "STRING",
+                      "paramDesc": "执行科室名称",
+                      "targetParamKey": "ExecDeptName",
+                      "targetParamType": "STRING",
+                      "keepSingleElementKey": null,
+                      "sort": 0,
+                      "mappingType": "NAME",
+                      "mappingSource": null,
+                      "mappingRule": null,
+                      "childParam": null
+                    },
+                    {
+                      "processType": "PRE_PROCESS",
+                      "sourceParamKey": "interfaceCode",
+                      "sourceParamType": "STRING",
+                      "paramDesc": "项目代码",
+                      "targetParamKey": "ItemCode",
+                      "targetParamType": "STRING",
+                      "keepSingleElementKey": null,
+                      "sort": 0,
+                      "mappingType": "NAME",
+                      "mappingSource": null,
+                      "mappingRule": null,
+                      "childParam": null
+                    },
+                    {
+                      "processType": "PRE_PROCESS",
+                      "sourceParamKey": "feeItemName",
+                      "sourceParamType": "STRING",
+                      "paramDesc": "项目名称",
+                      "targetParamKey": "ItemName",
+                      "targetParamType": "STRING",
+                      "keepSingleElementKey": null,
+                      "sort": 0,
+                      "mappingType": "NAME",
+                      "mappingSource": null,
+                      "mappingRule": null,
+                      "childParam": null
+                    },
+                    {
+                      "processType": "PRE_PROCESS",
+                      "sourceParamKey": "priceYuan",
+                      "sourceParamType": "STRING",
+                      "paramDesc": "项目费用",
+                      "targetParamKey": "Cost",
+                      "targetParamType": "STRING",
+                      "keepSingleElementKey": null,
+                      "sort": 0,
+                      "mappingType": "NAME",
+                      "mappingSource": null,
+                      "mappingRule": null,
+                      "childParam": null
+                    },
+                    {
+                      "processType": "PRE_PROCESS",
+                      "sourceParamKey": "sampleName",
+                      "sourceParamType": "STRING",
+                      "paramDesc": "样本名称",
+                      "targetParamKey": "SampleName",
+                      "targetParamType": "STRING",
+                      "keepSingleElementKey": null,
+                      "sort": 0,
+                      "mappingType": "NAME",
+                      "mappingSource": null,
+                      "mappingRule": null,
+                      "childParam": null
+                    },
+                    {
+                      "processType": "PRE_PROCESS",
+                      "sourceParamKey": "ddInterfaceCode1",
+                      "sourceParamType": "STRING",
+                      "paramDesc": "执行科室代码",
+                      "targetParamKey": "ExecDeptCode",
+                      "targetParamType": "STRING",
+                      "keepSingleElementKey": null,
+                      "sort": 0,
+                      "mappingType": "NAME",
+                      "mappingSource": null,
+                      "mappingRule": null,
+                      "childParam": null
+                    },
+                    {
+                      "processType": "PRE_PROCESS",
+                      "sourceParamKey": "idPatientFeeItem",
+                      "sourceParamType": "STRING",
+                      "paramDesc": "体检申请单号，用收费项业务id",
+                      "targetParamKey": "TjApplyNo",
+                      "targetParamType": "STRING",
+                      "keepSingleElementKey": null,
+                      "sort": 0,
+                      "mappingType": "NAME",
+                      "mappingSource": null,
+                      "mappingRule": null,
+                      "childParam": null
+                    },
+                    {
+                      "processType": "PRE_PROCESS",
+                      "sourceParamKey": "interfaceCode",
+                      "sourceParamType": "NONE",
+                      "paramDesc": "项目序号",
+                      "targetParamKey": "ItemNo",
+                      "targetParamType": "STRING",
+                      "keepSingleElementKey": null,
+                      "sort": 0,
+                      "mappingType": "CONSTANT",
+                      "mappingSource": null,
+                      "mappingRule": null,
+                      "childParam": null
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
         {
           "processType": "PRE_PROCESS",
           "sourceParamKey": null,
@@ -733,23 +1214,9 @@
           "keepSingleElementKey": null,
           "sort": 0,
           "mappingType": "NAME",
-          "mappingSource": "RESPONSE",
+          "mappingSource": null,
           "mappingRule": null,
           "childParam": [
-            {
-              "processType": "PRE_PROCESS",
-              "sourceParamKey": null,
-              "sourceParamType": "NONE",
-              "paramDesc": "交易名称:患者登记服务",
-              "targetParamKey": "TradeCode",
-              "targetParamType": "STRING",
-              "keepSingleElementKey": null,
-              "sort": 0,
-              "mappingType": "CONSTANT",
-              "mappingSource": "RESPONSE",
-              "mappingRule": "PAT202",
-              "childParam": null
-            },
             {
               "processType": "PRE_PROCESS",
               "sourceParamKey": null,
@@ -760,7 +1227,7 @@
               "keepSingleElementKey": null,
               "sort": 0,
               "mappingType": "CONSTANT",
-              "mappingSource": "RESPONSE",
+              "mappingSource": null,
               "mappingRule": "01",
               "childParam": null
             },
@@ -774,7 +1241,7 @@
               "keepSingleElementKey": null,
               "sort": 0,
               "mappingType": "EXPRESSION",
-              "mappingSource": "RESPONSE",
+              "mappingSource": null,
               "mappingRule": "new java.text.SimpleDateFormat(\"yyyy-MM-dd HH:mm:ss\").format(new java.util.Date())",
               "childParam": null
             },
@@ -782,196 +1249,13 @@
               "processType": "PRE_PROCESS",
               "sourceParamKey": null,
               "sourceParamType": "NONE",
-              "paramDesc": "系统编码",
-              "targetParamKey": "SystemCode",
+              "paramDesc": "医院编码",
+              "targetParamKey": "HospitalCode",
               "targetParamType": "STRING",
               "keepSingleElementKey": null,
               "sort": 0,
               "mappingType": "CONSTANT",
-              "mappingSource": "RESPONSE",
-              "mappingRule": "TJ",
-              "childParam": null
-            },
-            {
-              "processType": "PRE_PROCESS",
-              "sourceParamKey": null,
-              "sourceParamType": "NONE",
-              "paramDesc": "认证串（现场提供）",
-              "targetParamKey": "HipKeyNo",
-              "targetParamType": "STRING",
-              "keepSingleElementKey": null,
-              "sort": 0,
-              "mappingType": "CONSTANT",
-              "mappingSource": "RESPONSE",
-              "mappingRule": "eec5775dc57090fe9dfa43a8675bc2b6",
-              "childParam": null
-            },
-            {
-              "processType": "PRE_PROCESS",
-              "sourceParamKey": null,
-              "sourceParamType": "NONE",
-              "paramDesc": "交易唯一流水号",
-              "targetParamKey": "TradeNo",
-              "targetParamType": "STRING",
-              "keepSingleElementKey": null,
-              "sort": 0,
-              "mappingType": "CONSTANT",
-              "mappingSource": "RESPONSE",
-              "mappingRule": null,
-              "childParam": null
-            }
-          ]
-        },
-        {
-          "processType": "PRE_PROCESS",
-          "sourceParamKey": null,
-          "sourceParamType": "NONE",
-          "paramDesc": "Body标签",
-          "targetParamKey": "Body",
-          "targetParamType": "OBJECT",
-          "keepSingleElementKey": null,
-          "sort": 0,
-          "mappingType": "NAME",
-          "mappingSource": "RESPONSE",
-          "mappingRule": null,
-          "childParam": [
-            {
-              "processType": "PRE_PROCESS",
-              "sourceParamKey": "patientName",
-              "sourceParamType": "STRING",
-              "paramDesc": "姓名",
-              "targetParamKey": "patName",
-              "targetParamType": "STRING",
-              "keepSingleElementKey": null,
-              "sort": 0,
-              "mappingType": "NAME",
-              "mappingSource": "RESPONSE",
-              "mappingRule": null,
-              "childParam": null
-            },
-            {
-              "processType": "PRE_PROCESS",
-              "sourceParamKey": "birthday",
-              "sourceParamType": "STRING",
-              "paramDesc": "出生日期",
-              "targetParamKey": "birthday",
-              "targetParamType": "STRING",
-              "keepSingleElementKey": null,
-              "sort": 0,
-              "mappingType": "NAME",
-              "mappingSource": "RESPONSE",
-              "mappingRule": null,
-              "childParam": null
-            },
-            {
-              "processType": "PRE_PROCESS",
-              "sourceParamKey": "identitycard",
-              "sourceParamType": "STRING",
-              "paramDesc": "身份证号",
-              "targetParamKey": "idCard",
-              "targetParamType": "STRING",
-              "keepSingleElementKey": null,
-              "sort": 0,
-              "mappingType": "NAME",
-              "mappingSource": "RESPONSE",
-              "mappingRule": null,
-              "childParam": null
-            },
-            {
-              "processType": "PRE_PROCESS",
-              "sourceParamKey": "phone",
-              "sourceParamType": "STRING",
-              "paramDesc": "电话号码",
-              "targetParamKey": "phoneNumber",
-              "targetParamType": "STRING",
-              "keepSingleElementKey": null,
-              "sort": 0,
-              "mappingType": "NAME",
-              "mappingSource": "RESPONSE",
-              "mappingRule": null,
-              "childParam": null
-            },
-            {
-              "processType": "PRE_PROCESS",
-              "sourceParamKey": "orgName",
-              "sourceParamType": "STRING",
-              "paramDesc": "单位名称",
-              "targetParamKey": "companyName",
-              "targetParamType": "STRING",
-              "keepSingleElementKey": null,
-              "sort": 0,
-              "mappingType": "NAME",
-              "mappingSource": "RESPONSE",
-              "mappingRule": null,
-              "childParam": null
-            },
-            {
-              "processType": "PRE_PROCESS",
-              "sourceParamKey": "doctorInfo",
-              "sourceParamType": "STRING",
-              "paramDesc": "登记人编号",
-              "targetParamKey": "operatorId",
-              "targetParamType": "STRING",
-              "keepSingleElementKey": null,
-              "sort": 0,
-              "mappingType": "EXPRESSION",
-              "mappingSource": "RESPONSE",
-              "mappingRule": "#data[number]",
-              "childParam": null
-            },
-            {
-              "processType": "PRE_PROCESS",
-              "sourceParamKey": "doctorInfo",
-              "sourceParamType": "STRING",
-              "paramDesc": "登记人姓名",
-              "targetParamKey": "operatorName",
-              "targetParamType": "STRING",
-              "keepSingleElementKey": null,
-              "sort": 0,
-              "mappingType": "EXPRESSION",
-              "mappingSource": "RESPONSE",
-              "mappingRule": "#data[userName]",
-              "childParam": null
-            },
-            {
-              "processType": "PRE_PROCESS",
-              "sourceParamKey": null,
-              "sourceParamType": "NONE",
-              "paramDesc": "操作类型：1、 建档挂号",
-              "targetParamKey": "type",
-              "targetParamType": "STRING",
-              "keepSingleElementKey": null,
-              "sort": 0,
-              "mappingType": "CONSTANT",
-              "mappingSource": "RESPONSE",
-              "mappingRule": "1",
-              "childParam": null
-            },
-            {
-              "processType": "PRE_PROCESS",
-              "sourceParamKey": "patientCode",
-              "sourceParamType": "STRING",
-              "paramDesc": "体检号流水号",
-              "targetParamKey": "TjSerialNo",
-              "targetParamType": "STRING",
-              "keepSingleElementKey": null,
-              "sort": 0,
-              "mappingType": "NAME",
-              "mappingSource": "RESPONSE",
-              "mappingRule": null,
-              "childParam": null
-            },
-            {
-              "processType": "PRE_PROCESS",
-              "sourceParamKey": "visitNo",
-              "sourceParamType": "STRING",
-              "paramDesc": "预约号",
-              "targetParamKey": "visitNo",
-              "targetParamType": "STRING",
-              "keepSingleElementKey": null,
-              "sort": 0,
-              "mappingType": "NAME",
-              "mappingSource": "RESPONSE",
+              "mappingSource": null,
               "mappingRule": null,
               "childParam": null
             },
@@ -979,112 +1263,14 @@
               "processType": "PRE_PROCESS",
               "sourceParamKey": null,
               "sourceParamType": "NONE",
-              "paramDesc": "健康二维码",
-              "targetParamKey": "qrCode",
+              "paramDesc": "交易名称:体检检查项目同步",
+              "targetParamKey": "TradeCode",
               "targetParamType": "STRING",
               "keepSingleElementKey": null,
               "sort": 0,
               "mappingType": "CONSTANT",
-              "mappingSource": "RESPONSE",
-              "mappingRule": null,
-              "childParam": null
-            },
-            {
-              "processType": "PRE_PROCESS",
-              "sourceParamKey": "cardType",
-              "sourceParamType": "STRING",
-              "paramDesc": "身份证号",
-              "targetParamKey": "cardType",
-              "targetParamType": "STRING",
-              "keepSingleElementKey": null,
-              "sort": 0,
-              "mappingType": "EXPRESSION",
-              "mappingSource": "RESPONSE",
-              "mappingRule": "#data == \"1\" ? \"0\" : \"1\"",
-              "childParam": null
-            },
-            {
-              "processType": "PRE_PROCESS",
-              "sourceParamKey": "userType",
-              "sourceParamType": "INTEGER",
-              "paramDesc": "体检类别",
-              "targetParamKey": "physicalType",
-              "targetParamType": "STRING",
-              "keepSingleElementKey": null,
-              "sort": 0,
-              "mappingType": "EXPRESSION",
-              "mappingSource": "RESPONSE",
-              "mappingRule": "#data == 0 ? \"1\" : \"2\"",
-              "childParam": null
-            },
-            {
-              "processType": "PRE_PROCESS",
-              "sourceParamKey": "patientInfo",
-              "sourceParamType": "OBJECT",
-              "paramDesc": "申请时间",
-              "targetParamKey": "regDate",
-              "targetParamType": "STRING",
-              "keepSingleElementKey": null,
-              "sort": 0,
-              "mappingType": "EXPRESSION",
-              "mappingSource": "RESPONSE",
-              "mappingRule": "#data[registertime]",
-              "childParam": null
-            },
-            {
-              "processType": "PRE_PROCESS",
-              "sourceParamKey": "archivalNo",
-              "sourceParamType": "STRING",
-              "paramDesc": "体检号",
-              "targetParamKey": "TjNo",
-              "targetParamType": "STRING",
-              "keepSingleElementKey": null,
-              "sort": 0,
-              "mappingType": "NAME",
-              "mappingSource": "RESPONSE",
-              "mappingRule": null,
-              "childParam": null
-            },
-            {
-              "processType": "PRE_PROCESS",
-              "sourceParamKey": "sex",
-              "sourceParamType": "STRING",
-              "paramDesc": "性别",
-              "targetParamKey": "sex",
-              "targetParamType": "STRING",
-              "keepSingleElementKey": null,
-              "sort": 0,
-              "mappingType": "EXPRESSION",
-              "mappingSource": "RESPONSE",
-              "mappingRule": "#data == '1' ? '男' : '女'",
-              "childParam": null
-            },
-            {
-              "processType": "PRE_PROCESS",
-              "sourceParamKey": null,
-              "sourceParamType": "NONE",
-              "paramDesc": "纳税人识别号",
-              "targetParamKey": "taxNo",
-              "targetParamType": "STRING",
-              "keepSingleElementKey": null,
-              "sort": 0,
-              "mappingType": "CONSTANT",
-              "mappingSource": "RESPONSE",
-              "mappingRule": "12324243",
-              "childParam": null
-            },
-            {
-              "processType": "PRE_PROCESS",
-              "sourceParamKey": null,
-              "sourceParamType": "NONE",
-              "paramDesc": "是否匿名",
-              "targetParamKey": "NMFlag",
-              "targetParamType": "STRING",
-              "keepSingleElementKey": null,
-              "sort": 0,
-              "mappingType": "EXPRESSION",
-              "mappingSource": "RESPONSE",
-              "mappingRule": "#source[identitycard] == null ? '1' : '0'",
+              "mappingSource": null,
+              "mappingRule": "EXAM105",
               "childParam": null
             }
           ]
@@ -1094,44 +1280,20 @@
   ]
 }
 其中nodeInfo表示接口元信息
-paramsConfig是一个根据三方接口的入参出参构建的树状节点列表
-节点中的processType表示处理类型，PRE_PROCESS是前置处理也就是按照third_request的入参
-用jarvis_request中的字段转化而来
-sourceParamKey表示jarvis_request中的字段名称
-targetParamKey则是third_request要求的字段名称
+paramsConfig是一个根据三方接口的出入参构建的树状节点列表，每一个节点配置代表了一个参数配置
+下面介绍每个节点字段的含义
+processType表示处理类型，PRE_PROCESS是前置处理表示是由jarvis_request映射到third_request的节点，节点数量应当和third_request参数数量相同
+POST_PROCESS是后置处理表示是由third_response映射到jarvis_response的节点，节点数量应当和jarvis_response参数数量相同
 paramDesc是字段的描述信息
-sort默认值写0就行
-mappingType是映射类型，枚举值如下
-public enum MappingType {
-
-    /**
-     * 固定值
-     */
-    CONSTANT,
-
-    /**
-     * 名称映射
-     */
-    NAME,
-
-    /**
-     * 表达式:通常为SpEL
-     */
-    EXPRESSION,
-
-    /**
-     * Bean表达式映射:主要场景还是查体软表完成字段映射
-     */
-    BEAN_EXPRESSION,
-
-    /**
-     * MAP只有一个key-map键值对
-     */
-    SINGLE_MAP
-}
-
+sort硬编码为0即可
+mappingSource是映射源，只有在processType为POST_PROCESS时才会使用，值为RESPONSE和INPUT
+sourceParamKey和sourceParamType表示映射源的字段名称以及对应的类型
+targetParamKey和targetParamType表示目标字段名称以及对应的类型
+当processType为PRE_PROCESS时，sourceParamKey就是jarvis_request中的字段，targetParamKey就是third_request中的字段
+当processType为POST_PROCESS时，sourceParamKey会根据mappingSource确定该字段的映射来源，若为RESPONSE就是third_response中的字段，
+若为INPUT就是jarvis_request中的字段，targetParamKey固定就是jarvis_response中的字段
 sourceParamType和targetParamType的枚举如下
-{
+public enum ParamType {
 
     /**
      * 字符串
@@ -1173,18 +1335,68 @@ sourceParamType和targetParamType的枚举如下
      */
     NONE;
 }
-childParam表示这个节点有没有子节点，通常targetParamType为对象或数组时需要配置子节点
-targetParamType是对象的情况下的构建规则为
-构建一个父节点用于映射，子节点就是对象里面的字段了
+当type为NONE只会应用在sourceParamType，表示targetParamKey字段的值不需要直接依赖sourceParamKey或者是一个对象结构，
+当type为PURE_ARRAY只会应用在targetParamType，并且第一个节点就是该类型，表示三方接口的入参就是纯数组格式通常为http的请求体就是一个数组，
+当type为OBJECT表示sourceParamKey或targetParamKey所在的字段是个对象，就会存在嵌套子节点
+当type为ARRAY表示sourceParamKey或targetParamKey所在的字段是个数组，也会存在嵌套子节点
+当type为其余类型就表示sourceParamKey或targetParamKey所在的字段是个基础数据类型不会有嵌套子节点
+targetParamType为OBJECT时，sourceParamType为NONE表示目标参数只是用于表示对象结构，sourceParamType为OBJECT表示源参数也是个
+对象，就会向下递归，targetParamKey的子节点的映射源就是sourceParamKey递归进去的数据了，如果sourceParamType是ARRAY默认取数组的首个元素进行递归
+targetParamType为ARRAY时，必然会存在一个虚拟的节点用于表示数组元素结构，sourceParamType为OBJECT表示源参数是个对象，就会向下递归，数组的大小都会只是1
+如果sourceParamType是ARRAY也会向下递归，每个虚拟节点映射的就是递归进去的每个元素
+
+mappingType是映射类型，表示targetParamKey的字段值是如何生成的，枚举值如下
+public enum MappingType {
+
+    /**
+     * 固定值
+     */
+    CONSTANT,
+
+    /**
+     * 名称映射
+     */
+    NAME,
+
+    /**
+     * 表达式:通常为SpEL
+     */
+    EXPRESSION,
+
+    /**
+     * Bean表达式映射:主要场景还是查体软表完成字段映射
+     */
+    BEAN_EXPRESSION,
+
+    /**
+     * MAP只有一个key-map键值对
+     */
+    SINGLE_MAP
+}
+mappingRule表示映射时的规则
+当MappingType为CONSTANT时，表示targetParamKey的值是个固定值，mappingRule就是固定值的内容，此时sourceParamType就是NONE，因为不需要依赖源数据
+当MappingType为NAME时，表示是直接按照名称去映射，通常是targetParamType和sourceParamType递归后的处理方式
+当MappingType为EXPRESSION时，表示是个SpEL表达式会依据mappingRule表达式来得出结果值，针对于不同的processType，SpEL依赖的上下文会不同
+如果processType为PRE_PROCESS，上下文有这三种#data、#parent和#source，#data表示当前层级的映射源数据，#parent表示当前层级的父层级的映射源数据
+#source表示根映射源的数据
+如果processType为POST_PROCESS，上下文有这三种#data、#input和#response，#data表示当前层级的映射源数据，#input表示mappingSource为INPUT的根数据源
+#response表示mappingSource为RESPONSE的根数据源
+当MappingType为BEAN_EXPRESSION时,表示会使用框架内置的bean完成值的转化，当前支持#hemsMapper.selectPatientCodeByVisitNo和#hemsMapper.selectPatientCodeByApplyId
+当MappingType为SINGLE_MAP时,表示虚拟节点的父节点targetParamType为数组时，数组的元素都是基础数据类型的场景，这个时候子节点就需要设置为SINGLE_MAP
+
+childParam表示这个节点有没有子节点，当targetParamType为对象或数组时就会存在子节点
+当targetParamType是对象的情况下
+构建一个父节点用于映射递归，子节点就是源数据里面的字段
 targetParamType是数组的情况下的构建规则为
 1、如果sourceParamType为OBJECT就只能转化成一维数组，递归配置对应的子节点就好
-2、sourceParamType如果为ARRAY或PURE_ARRAY支持一维和多维，递归配置对应的子节点就好
-无论原参数是数组还是对象只要是构建数组都需要创建一个虚拟节点作为数组元素的父节点，
-这个是虚拟节点没有sourceParamKey和sourceParamType的，虚拟节点的父节点就是targetParamKey对应的节点
-paramsConfig中PRE_PROCESS节点的数量是需要以third_request为准
-由jarvis_request转化而来
-paramsConfig中POST_PROCESS节点的数量是需要以jarvis_response为准
-由third_response转化而来
+2、sourceParamType如果为ARRAY支持一维和多维，递归配置对应的子节点就好
+需要注意的是targetParamType是数组的情况下必须会存在一个targetParamType为OBJECT,sourceParamType为NONE的虚拟节点，节点名字通常会带上Node后缀
 
-现在我会给你一个新厂商的建档接口的入参和响应，jarvis_request和jarvis_response是不变的
-需要根据新厂商的建档入参和响应给我生成针对新厂商的接口映射配置必须是json格式的,直接给我最终的json文件输出就可以
+需要注意的是，三方接口可能仅支持单个items的创建，这个时候jarvis_request中的items不是数组了，而是一个包含单个项目的对象
+
+现在我会给你一个新厂商的申请单创建接口的入参和响应
+请基于新厂商申请单创建接口的入参结构与响应格式，生成对应的接口映射配置。要求如下：
+1. 输出内容仅为标准JSON字符串，无任何额外文字、注释或标记；
+2. JSON需严格包含nodeInfo和paramsConfig数组；
+3. paramsConfig中每个PRE_PROCESS类型的参数项，需完整包含processType、sourceParamKey、sourceParamType、paramDesc、targetParamKey、targetParamType、sort、mappingType、mappingRule、childParam字段；
+4. 最终JSON必须**换行缩进格式化**（每个对象、数组单独换行，层级缩进清晰），便于阅读。

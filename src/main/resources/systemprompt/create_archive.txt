@@ -1,4 +1,3 @@
-以下是建档接口的调用链路
 首先是上游的入参，称作jarvis_request，它是基于json的数据格式
 {
     "sex" : "2",
@@ -50,7 +49,7 @@
     }
 }
 
-然后这是上游建档接口要求的响应出参，称作jarvis_response
+上游建档接口响应出参，称作jarvis_response
 {
   "code": "200",
   "message": "成功",
@@ -139,13 +138,14 @@
     <TradeTime>2025-10-14 15:10:43</TradeTime>
 </Head>
 
-现在有个interface-agent平台，它的作用是将上游的入参jarvis_request转化成三方接口需要的入参third_request
-并把三方接口的响应third_response转化成上游的jarvis_response响应，进行完成接口的配置化对接
-平台通过json的配置文件完成整个链路的映射，下面的json就是上述的配置文件信息
-这是针对上述案例json的配置信息
+interface-agent平台介绍
+它的作用是将上游入参jarvis_request映射成三方接口入参third_request
+并把三方接口响应出参third_response映射成上游出参响应jarvis_response，进而完成三方接口的调用
+平台通过json格式的配置文件完成每个字段的映射
+这是针对上述三方接口是json格式的配置信息
 {
   "nodeInfo": {
-    "nodeName": "创建档案",
+    "nodeName": "建档",
     "nodeType": "HTTP"
   },
   "paramsConfig": [
@@ -156,6 +156,7 @@
       "paramDesc": "体检编号",
       "targetParamKey": "patientCode",
       "targetParamType": "STRING",
+      "keepSingleElementKey": null,
       "sort": 1,
       "mappingType": "NAME",
       "mappingSource": "RESPONSE",
@@ -169,6 +170,7 @@
       "paramDesc": "病人 ID",
       "targetParamKey": "patientId",
       "targetParamType": "STRING",
+      "keepSingleElementKey": null,
       "sort": 1,
       "mappingType": "NAME",
       "mappingSource": "RESPONSE",
@@ -182,6 +184,7 @@
       "paramDesc": "姓名",
       "targetParamKey": "name",
       "targetParamType": "STRING",
+      "keepSingleElementKey": null,
       "sort": 1,
       "mappingType": "NAME",
       "mappingSource": "RESPONSE",
@@ -195,6 +198,7 @@
       "paramDesc": "年龄",
       "targetParamKey": "age",
       "targetParamType": "INTEGER",
+      "keepSingleElementKey": null,
       "sort": 1,
       "mappingType": "NAME",
       "mappingSource": "RESPONSE",
@@ -208,6 +212,7 @@
       "paramDesc": "出生日期",
       "targetParamKey": "birthDate",
       "targetParamType": "STRING",
+      "keepSingleElementKey": null,
       "sort": 1,
       "mappingType": "NAME",
       "mappingSource": "RESPONSE",
@@ -221,6 +226,7 @@
       "paramDesc": "证件类型",
       "targetParamKey": "cardType",
       "targetParamType": "STRING",
+      "keepSingleElementKey": null,
       "sort": 1,
       "mappingType": "NAME",
       "mappingSource": "RESPONSE",
@@ -234,6 +240,7 @@
       "paramDesc": "证件编号",
       "targetParamKey": "cardId",
       "targetParamType": "STRING",
+      "keepSingleElementKey": null,
       "sort": 1,
       "mappingType": "NAME",
       "mappingSource": "RESPONSE",
@@ -247,6 +254,7 @@
       "paramDesc": "家庭地址",
       "targetParamKey": "address",
       "targetParamType": "STRING",
+      "keepSingleElementKey": null,
       "sort": 1,
       "mappingType": "NAME",
       "mappingSource": "RESPONSE",
@@ -260,6 +268,7 @@
       "paramDesc": "联系电话",
       "targetParamKey": "phone",
       "targetParamType": "STRING",
+      "keepSingleElementKey": null,
       "sort": 1,
       "mappingType": "NAME",
       "mappingSource": "RESPONSE",
@@ -273,10 +282,11 @@
       "paramDesc": "婚姻状况",
       "targetParamKey": "marital",
       "targetParamType": "STRING",
+      "keepSingleElementKey": null,
       "sort": 1,
       "mappingType": "EXPRESSION",
-      "mappingSource": "RESPONSE",
-      "mappingRule": "#data['marriage'] == null || #data['marriage'] == '' ) ? '未知' : (#data['marriage'] == '1' ? '未婚' : (#data['marriage'] == '2' ? '已婚' : '未知')",
+      "mappingSource": null,
+      "mappingRule": "(#data == null || #data == '') ? '未知' : #data == '1' ? '未婚' : (#data == '2' ? '已婚' : '未知')",
       "childParam": null
     },
     {
@@ -286,6 +296,7 @@
       "paramDesc": "民族",
       "targetParamKey": "nation",
       "targetParamType": "STRING",
+      "keepSingleElementKey": null,
       "sort": 1,
       "mappingType": "NAME",
       "mappingSource": "RESPONSE",
@@ -299,6 +310,7 @@
       "paramDesc": "国籍",
       "targetParamKey": "country",
       "targetParamType": "STRING",
+      "keepSingleElementKey": null,
       "sort": 1,
       "mappingType": "NAME",
       "mappingSource": "RESPONSE",
@@ -312,6 +324,7 @@
       "paramDesc": "学历",
       "targetParamKey": "education",
       "targetParamType": "STRING",
+      "keepSingleElementKey": null,
       "sort": 1,
       "mappingType": "NAME",
       "mappingSource": "RESPONSE",
@@ -325,6 +338,7 @@
       "paramDesc": "联系人",
       "targetParamKey": "contactName",
       "targetParamType": "STRING",
+      "keepSingleElementKey": null,
       "sort": 1,
       "mappingType": "NAME",
       "mappingSource": "RESPONSE",
@@ -338,6 +352,7 @@
       "paramDesc": "联系人电话",
       "targetParamKey": "contactPhone",
       "targetParamType": "STRING",
+      "keepSingleElementKey": null,
       "sort": 1,
       "mappingType": "NAME",
       "mappingSource": "RESPONSE",
@@ -351,6 +366,7 @@
       "paramDesc": "联系人地址",
       "targetParamKey": "contactAddress",
       "targetParamType": "STRING",
+      "keepSingleElementKey": null,
       "sort": 1,
       "mappingType": "NAME",
       "mappingSource": "RESPONSE",
@@ -364,6 +380,7 @@
       "paramDesc": "合约单位 ID",
       "targetParamKey": "orgId",
       "targetParamType": "STRING",
+      "keepSingleElementKey": null,
       "sort": 1,
       "mappingType": "NAME",
       "mappingSource": "RESPONSE",
@@ -377,6 +394,7 @@
       "paramDesc": "合约单位名称",
       "targetParamKey": "orgName",
       "targetParamType": "STRING",
+      "keepSingleElementKey": null,
       "sort": 1,
       "mappingType": "NAME",
       "mappingSource": "RESPONSE",
@@ -390,10 +408,11 @@
       "paramDesc": "性别（0/null/3→未知，1→男，2→女）",
       "targetParamKey": "sex",
       "targetParamType": "STRING",
+      "keepSingleElementKey": null,
       "sort": 1,
       "mappingType": "EXPRESSION",
-      "mappingSource": "RESPONSE",
-      "mappingRule": "#data['sex'] == null || #data['sex'] == '' ) ? '未知' : (#data['sex'] == '1' ? '未婚' : (#data['sex'] == '2' ? '已婚' : '未知')",
+      "mappingSource": null,
+      "mappingRule": "(#data == null || #data == '' ) ? '未知' : #data == '1' ? '未婚' : (#data == '2' ? '已婚' : '未知')",
       "childParam": null
     },
     {
@@ -403,6 +422,7 @@
       "paramDesc": "响应状态码转换：1->200，其他->-1",
       "targetParamKey": "code",
       "targetParamType": "STRING",
+      "keepSingleElementKey": null,
       "sort": 1,
       "mappingType": "EXPRESSION",
       "mappingSource": "RESPONSE",
@@ -416,6 +436,7 @@
       "paramDesc": null,
       "targetParamKey": "rsp",
       "targetParamType": "OBJECT",
+      "keepSingleElementKey": null,
       "sort": 1,
       "mappingType": "NAME",
       "mappingSource": "RESPONSE",
@@ -428,6 +449,7 @@
           "paramDesc": null,
           "targetParamKey": "outPatientCode",
           "targetParamType": "STRING",
+          "keepSingleElementKey": null,
           "sort": 1,
           "mappingType": "NAME",
           "mappingSource": "RESPONSE",
@@ -441,6 +463,7 @@
           "paramDesc": null,
           "targetParamKey": "visitNo",
           "targetParamType": "STRING",
+          "keepSingleElementKey": null,
           "sort": 1,
           "mappingType": "NAME",
           "mappingSource": "RESPONSE",
@@ -456,6 +479,7 @@
       "paramDesc": null,
       "targetParamKey": "message",
       "targetParamType": "STRING",
+      "keepSingleElementKey": null,
       "sort": 1,
       "mappingType": "NAME",
       "mappingSource": "RESPONSE",
@@ -464,7 +488,7 @@
     }
   ]
 }
-这是针对xml的配置信息
+这是针对三方接口是xml格式的配置信息
 {
   "nodeInfo": {
     "nodeName": "创建档案",
@@ -926,44 +950,20 @@
   ]
 }
 其中nodeInfo表示接口元信息
-paramsConfig是一个根据三方接口的入参出参构建的树状节点列表
-节点中的processType表示处理类型，PRE_PROCESS是前置处理也就是按照third_request的入参
-用jarvis_request中的字段转化而来
-sourceParamKey表示jarvis_request中的字段名称
-targetParamKey则是third_request要求的字段名称
+paramsConfig是一个根据三方接口的出入参构建的树状节点列表，每一个节点配置代表了一个参数配置
+下面介绍每个节点字段的含义
+processType表示处理类型，PRE_PROCESS是前置处理表示是由jarvis_request映射到third_request的节点，节点数量应当和third_request参数数量相同
+POST_PROCESS是后置处理表示是由third_response映射到jarvis_response的节点，节点数量应当和jarvis_response参数数量相同
 paramDesc是字段的描述信息
-sort默认值写0就行
-mappingType是映射类型，枚举值如下
-public enum MappingType {
-
-    /**
-     * 固定值
-     */
-    CONSTANT,
-
-    /**
-     * 名称映射
-     */
-    NAME,
-
-    /**
-     * 表达式:通常为SpEL
-     */
-    EXPRESSION,
-
-    /**
-     * Bean表达式映射:主要场景还是查体软表完成字段映射
-     */
-    BEAN_EXPRESSION,
-
-    /**
-     * MAP只有一个key-map键值对
-     */
-    SINGLE_MAP
-}
-
+sort硬编码为0即可
+mappingSource是映射源，只有在processType为POST_PROCESS时才会使用，值为RESPONSE和INPUT
+sourceParamKey和sourceParamType表示映射源的字段名称以及对应的类型
+targetParamKey和targetParamType表示目标字段名称以及对应的类型
+当processType为PRE_PROCESS时，sourceParamKey就是jarvis_request中的字段，targetParamKey就是third_request中的字段
+当processType为POST_PROCESS时，sourceParamKey会根据mappingSource确定该字段的映射来源，若为RESPONSE就是third_response中的字段，
+若为INPUT就是jarvis_request中的字段，targetParamKey固定就是jarvis_response中的字段
 sourceParamType和targetParamType的枚举如下
-{
+public enum ParamType {
 
     /**
      * 字符串
@@ -1005,18 +1005,67 @@ sourceParamType和targetParamType的枚举如下
      */
     NONE;
 }
-childParam表示这个节点有没有子节点，通常targetParamType为对象或数组时需要配置子节点
-targetParamType是对象的情况下的构建规则为
-构建一个父节点用于映射，子节点就是对象里面的字段了
+当type为NONE只会应用在sourceParamType，表示targetParamKey字段的值不需要直接依赖sourceParamKey或者是一个对象结构，
+当type为PURE_ARRAY只会应用在targetParamType，并且第一个节点就是该类型，表示三方接口的入参就是纯数组格式通常为http的请求体就是一个数组，
+当type为OBJECT表示sourceParamKey或targetParamKey所在的字段是个对象，就会存在嵌套子节点
+当type为ARRAY表示sourceParamKey或targetParamKey所在的字段是个数组，也会存在嵌套子节点
+当type为其余类型就表示sourceParamKey或targetParamKey所在的字段是个基础数据类型不会有嵌套子节点
+targetParamType为OBJECT时，sourceParamType为NONE表示目标参数只是用于表示对象结构，sourceParamType为OBJECT表示源参数也是个
+对象，就会向下递归，targetParamKey的子节点的映射源就是sourceParamKey递归进去的数据了，如果sourceParamType是ARRAY默认取数组的首个元素进行递归
+targetParamType为ARRAY时，必然会存在一个虚拟的节点用于表示数组元素结构，sourceParamType为OBJECT表示源参数是个对象，就会向下递归，数组的大小都会只是1
+如果sourceParamType是ARRAY也会向下递归，每个虚拟节点映射的就是递归进去的每个元素
+
+mappingType是映射类型，表示targetParamKey的字段值是如何生成的，枚举值如下
+public enum MappingType {
+
+    /**
+     * 固定值
+     */
+    CONSTANT,
+
+    /**
+     * 名称映射
+     */
+    NAME,
+
+    /**
+     * 表达式:通常为SpEL
+     */
+    EXPRESSION,
+
+    /**
+     * Bean表达式映射:主要场景还是查体软表完成字段映射
+     */
+    BEAN_EXPRESSION,
+
+    /**
+     * MAP只有一个key-map键值对
+     */
+    SINGLE_MAP
+}
+mappingRule表示映射时的规则
+当MappingType为CONSTANT时，表示targetParamKey的值是个固定值，mappingRule就是固定值的内容，此时sourceParamType就是NONE，因为不需要依赖源数据
+当MappingType为NAME时，表示是直接按照名称去映射，通常是targetParamType和sourceParamType递归后的处理方式
+当MappingType为EXPRESSION时，表示是个SpEL表达式会依据mappingRule表达式来得出结果值，针对于不同的processType，SpEL依赖的上下文会不同
+如果processType为PRE_PROCESS，上下文有这三种#data、#parent和#source，#data表示当前层级的映射源数据，#parent表示当前层级的父层级的映射源数据
+#source表示根映射源的数据
+如果processType为POST_PROCESS，上下文有这三种#data、#input和#response，#data表示当前层级的映射源数据，#input表示mappingSource为INPUT的根数据源
+#response表示mappingSource为RESPONSE的根数据源
+当MappingType为BEAN_EXPRESSION时,表示会使用框架内置的bean完成值的转化，当前支持#hemsMapper.selectPatientCodeByVisitNo和#hemsMapper.selectPatientCodeByApplyId
+当MappingType为SINGLE_MAP时,表示虚拟节点的父节点targetParamType为数组时，数组的元素都是基础数据类型的场景，这个时候子节点就需要设置为SINGLE_MAP
+
+childParam表示这个节点有没有子节点，当targetParamType为对象或数组时就会存在子节点
+当targetParamType是对象的情况下
+构建一个父节点用于映射递归，子节点就是源数据里面的字段
 targetParamType是数组的情况下的构建规则为
 1、如果sourceParamType为OBJECT就只能转化成一维数组，递归配置对应的子节点就好
-2、sourceParamType如果为ARRAY或PURE_ARRAY支持一维和多维，递归配置对应的子节点就好
-无论原参数是数组还是对象只要是构建数组都需要创建一个虚拟节点作为数组元素的父节点，
-这个是虚拟节点没有sourceParamKey和sourceParamType的，虚拟节点的父节点就是targetParamKey对应的节点
-paramsConfig中PRE_PROCESS节点的数量是需要以third_request为准
-由jarvis_request转化而来
-paramsConfig中POST_PROCESS节点的数量是需要以jarvis_response为准
-由third_response转化而来
+2、sourceParamType如果为ARRAY支持一维和多维，递归配置对应的子节点就好
+需要注意的是targetParamType是数组的情况下必须会存在一个targetParamType为OBJECT,sourceParamType为NONE的虚拟节点，节点名字通常会带上Node后缀
 
-现在我会给你一个新厂商的建档接口的入参和响应，jarvis_request和jarvis_response是不变的
-需要根据新厂商的建档入参和响应给我生成针对新厂商的接口映射配置必须是json格式的,直接给我最终的json文件输出就可以
+现在我会给你一个新厂商的建档接口的入参和响应
+请基于新厂商建档接口的入参结构与响应格式，生成对应的接口映射配置。要求如下：
+1. 输出内容仅为标准JSON字符串，无任何额外文字、注释或标记；
+2. JSON需严格包含nodeInfo和paramsConfig数组；
+3. paramsConfig中每个PRE_PROCESS类型的参数项，需完整包含processType、sourceParamKey、sourceParamType、paramDesc、targetParamKey、targetParamType、sort、mappingType、mappingRule、childParam字段；
+4. 最终JSON必须**换行缩进格式化**（每个对象、数组单独换行，层级缩进清晰），便于阅读。
+
